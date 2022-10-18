@@ -3,9 +3,12 @@
 */
 
 import { configureStore } from '@reduxjs/toolkit'
+import { campuses } from './CampusesSlice'
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    Allcampuses: campuses
+  },
 })
 
 export default store
