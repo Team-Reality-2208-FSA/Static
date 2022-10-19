@@ -2,13 +2,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    students: []
+    students: [],
+    student: {}
 }
 
 export const fetchStudentsAsync = createAsyncThunk("fetchStudentsAsync", async()=>{
     const { data } = await axios.get("api/students")
     return data
 })
+
+export const fetchSingleStudent = createAsyncThunk("fetchSingleStudent", async(stuId)=> {
+    const { data } = await axios.get()
+    return data
+} )
 
 
 export const studentsSlice = createSlice({

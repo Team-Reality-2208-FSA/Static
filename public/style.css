@@ -60,3 +60,21 @@
   #allStudents {
     margin-left: 12vw;
   }
+
+  .singleCampusName {
+
+  }
+
+  .singleCampusImg {
+    max-width: 60vw;
+    max-height: 50vh;
+  }
+
+  .singleCampusDesc {
+    width: 50vw;
+    
+  }
+
+  .singleCampusAddress {
+    width: 20vw;
+  }

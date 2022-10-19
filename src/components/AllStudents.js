@@ -18,7 +18,7 @@ const AllStudents = ()=> {
             <h1 id="allStudents">All Students</h1>
             <ul>
                 {students.map((student)=>{
-                    return <li className="students" key={student.id}><h3>{student.name}</h3><img className="studentImgs" src={student.imageUrl}/></li>
+                    return <li className="students" key={student.id}><h3>{student.firstName} {student.lastName}</h3><img className="studentImgs" src={student.imageUrl}/></li>
                 })}
             </ul>
         </>

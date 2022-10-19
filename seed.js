@@ -1,5 +1,5 @@
 const { green, red } = require('chalk')
-const { db, Student, Campus } = require('./server/db/index')
+const { db, Students, Campuses } = require('./server/db/index')
 
 
 const addCampuses = async() => {
@@ -31,26 +31,28 @@ const addCampuses = async() => {
     description: "Since its founding in 1831, NYU has been an innovator in higher education, reaching out to an emerging middle class, embracing an urban identity and professional focus, and promoting a global vision that informs its 19 schools and colleges. Today, that trailblazing spirit makes NYU one of the most prominent and respected research universities in the world, featuring top-ranked academic programs and accepting fewer than one in eight undergraduates. Anchored in New York City and with degree-granting campuses in Abu Dhabi and Shanghai as well as 12 study away sites throughout the world, NYU is a leader in global education, with more international students and more students studying abroad than any other US university.",
   }
 
-  await Campus.create(NYU)
-  await Campus.create(RCC)
-  await Campus.create(USC)
-  await Campus.create(Berklee)
+  await Campuses.create(NYU)
+  await Campuses.create(RCC)
+  await Campuses.create(USC)
+  await Campuses.create(Berklee)
 }
 
 const addStudents = async() => {
   const Aang = {
-    firstName: "Aang",
-    lastName: "Avatar",
+    firstName: "Avatar",
+    lastName: "Aang",
     email: "penguinSledder@gmail.com",
     imageUrl: "https://www.looper.com/img/gallery/why-aangs-power-in-avatar-the-last-airbender-is-more-terrifying-than-you-think/intro-1616420787.jpg",
     gpa: 2.7,
+    CampusId: 1,
   }
   const JonSnow = {
-    firstName: "Aeogan",
+    firstName: "Aegon",
     lastName: "Targaryan",
     email: "kingInTheNorth@gmail.com",
     imageUrl: "https://media.gq-magazine.co.uk/photos/62ac38f82da9f5f89888eba9/16:9/w_1280,c_limit/jon-snow-series-1200.jpeg",
     gpa: 3.0,
+    CampusId: 2,
   }
   const Jesse = {
     firstName: "Jesse",
@@ -58,6 +60,7 @@ const addStudents = async() => {
     email: "pinkman@gmail.com",
     imageUrl: "https://i.insider.com/5d9f3f5183486904582ee506?width=750&format=jpeg&auto=webp",
     gpa: 1.2,
+    CampusId: 3,
   }
   const Hozier = {
     firstName: "Andrew",
@@ -65,11 +68,12 @@ const addStudents = async() => {
     email: "fromeden@gmail.com",
     imageUrl: "https://i.scdn.co/image/ab6761610000e5eb9ba4d95b74bacff4d5747f61",
     gpa: 3.5,
+    CampusId: 4,
   }
-  await Student.create(Hozier)
-  await Student.create(Jesse)
-  await Student.create(JonSnow)
-  await Student.create(Aang)
+  await Students.create(Hozier)
+  await Students.create(Jesse)
+  await Students.create(JonSnow)
+  await Students.create(Aang)
 }
 
 const seed = async () => {
