@@ -31,4 +31,32 @@
     flex-direction: column;
     justify-content: center;
   }
-  
+  .campusImgs {
+    max-width: 20vw;
+    max-height: 20vh;
+  }
+  .campuses {
+    border: 8px solid gray;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+  }
+
+  #allCampuses {
+    margin-left: 12vw;
+  }
+
+  .studentImgs {
+    max-width: 20vw;
+    max-height: 20vh;
+  }
+  .students {
+    border: 8px solid gray;
+  }
+
+  #allStudents {
+    margin-left: 12vw;
+  }

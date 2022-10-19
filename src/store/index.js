@@ -3,11 +3,13 @@
 */
 
 import { configureStore } from '@reduxjs/toolkit'
-import { campuses } from './CampusesSlice'
+import campusesSlice from './campusesSlice'
+import  studentsSlice  from './StudentsSlice'
 
 const store = configureStore({
   reducer: {
-    Allcampuses: campuses
+    campuses: campusesSlice,
+    students: studentsSlice
   },
 })
 

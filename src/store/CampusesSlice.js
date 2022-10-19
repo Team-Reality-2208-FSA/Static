@@ -1,24 +1,33 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchCampusesAsync = createAsyncThunk("campuses/fetchCampuses", async()=>{
+const initialState = {
+    campuses: []
+}
+
+export const fetchCampusesAsync = createAsyncThunk("fetchCampusesAsync", async()=>{
     const { data } = await axios.get("api/campuses")
     return data
 })
 
 
-export const CampusesSlice = createSlice({
+export const campusesSlice = createSlice({
     name: "campuses",
-    initialState: [],
-    reducers: {
-
-    },
-    extraReducer:(builder)=>{
+    initialState,
+    reducers: {},
+    extraReducers:(builder)=>{
         builder.addCase(fetchCampusesAsync.fulfilled, (state, action)=>{
-            state = action.payload
+            console.log('DONE!')
+            state.campuses = action.payload
+            
+        })
+        builder.addCase(fetchCampusesAsync.pending, (state,action)=> {
+            console.log("pending")
         })
     }
 })
-export const selectCampuses = (state) => state;
+export const selectCampuses = (state) => {
+    return state.campuses;
+  };
 
-export const campuses = CampusesSlice.reducer
+export default campusesSlice.reducer
