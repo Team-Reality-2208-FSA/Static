@@ -12,10 +12,10 @@ const Campuses = db.define("Campuses",{
     },
     imageUrl: {
         type: Sequelize.STRING,
-        defaultValue: ".../"
+        defaultValue: "https://news.belmont.edu/wp-content/uploads/2019/07/The-Lawn.jpg"
 
     },
-    adress: {
+    address: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -24,7 +24,8 @@ const Campuses = db.define("Campuses",{
     },
     description: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "Campus Description"
     },
     
 }) 

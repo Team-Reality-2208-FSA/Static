@@ -99,3 +99,12 @@
     display: flex;
     align-content: flex-start;
   }
+
+  .campusForm {
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    height: 30em;
+    width: 20em;
+    border: 5px solid lightgray
+  }

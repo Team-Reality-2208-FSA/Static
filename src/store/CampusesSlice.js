@@ -14,10 +14,14 @@ export const fetchCampusesAsync = createAsyncThunk("fetchCampusesAsync", async (
 
 export const fetchSingleCampus = createAsyncThunk("fetchSingleCampus", async (id)=> {
     const { data }  = await axios.get(`/api/campuses/${id}`)
-
     return data
 } )
-
+export const postCampus = createAsyncThunk("postCampus", async (sub)=>{
+    console.log("sending ajax post request", sub)
+    const { data } = await axios.post("/api/campuses", sub)
+    console.log("data received from Ajax request", data)
+    return data
+})
 
 export const campusesSlice = createSlice({
     name: "campuses",
@@ -42,8 +46,9 @@ export const campusesSlice = createSlice({
             console.log('Campus aqquired!')
             state.loading = false
             state.campus = action.payload
-
-            
+        })
+        builder.addCase(postCampus.fulfilled, (state,action)=>{
+            state.campuses.push(action.payload)
         })
     }
 })

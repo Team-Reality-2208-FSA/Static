@@ -26,4 +26,10 @@ router.get("/:campusId", async (req,res,next)=>{
 }
 })
 
+router.post('/', async (req, res, next)=>{
+    
+    const newCampus = await Campuses.create(req.body)
+    res.send(newCampus)
+})
+
 module.exports = router
