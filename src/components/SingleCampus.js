@@ -11,13 +11,14 @@ const SingleCampus = () => {
     const dispatch = useDispatch()
     const { campId } = useParams()
 
+
     useEffect(()=>{
         dispatch(fetchSingleCampus(campId))
     },[dispatch])
 
     const loading = useSelector(isLoading)
     const campus = useSelector(selectCampus)
-    console.log(campus)
+   
     if(!loading) {
     return (
         <>

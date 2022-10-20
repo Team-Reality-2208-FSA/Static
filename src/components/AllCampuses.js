@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const AllCampuses = ()=> {
     const dispatch = useDispatch()
     const campuses = useSelector(selectCampuses).campuses
-    console.log(campuses)
     
     useEffect(()=>{
         dispatch(fetchCampusesAsync())
