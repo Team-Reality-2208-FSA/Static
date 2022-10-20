@@ -13,9 +13,7 @@ const Students = require("./Students")
 // Puppy.belongsTo(Owner)
 
 Students.belongsTo(Campuses)
-Campuses.hasMany(Students, {
-  foreignKey: 'campusId'
-})
+Campuses.hasMany(Students)
 
 
 module.exports = {

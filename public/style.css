@@ -78,3 +78,24 @@
   .singleCampusAddress {
     width: 20vw;
   }
+
+  .studentsOfCampusLi {
+    border: 6px solid lightgray;
+    height: 25em;
+    width: 28em
+  }
+  .studentsOfCampusImg {
+    width: 20em;
+    height: 15em
+  }
+  .studentsOfCampusEmail {
+    
+  }
+  .studentsOfCampusGpa {
+    
+  }
+  .studentsOfCampus {
+    border: 6px solid lightgray;
+    display: flex;
+    align-content: flex-start;
+  }

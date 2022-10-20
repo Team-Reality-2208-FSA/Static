@@ -3,7 +3,8 @@ import axios from "axios";
 
 const initialState = {
     campuses: [],
-    campus: {}
+    campus: {},
+    loading: true
 }
 
 export const fetchCampusesAsync = createAsyncThunk("fetchCampusesAsync", async ()=>{
@@ -12,9 +13,7 @@ export const fetchCampusesAsync = createAsyncThunk("fetchCampusesAsync", async (
 })
 
 export const fetchSingleCampus = createAsyncThunk("fetchSingleCampus", async (id)=> {
-    
     const { data }  = await axios.get(`/api/campuses/${id}`)
-    console.log("fetchSingleCampus firing", data)
     return data
 } )
 
@@ -27,17 +26,22 @@ export const campusesSlice = createSlice({
         builder.addCase(fetchCampusesAsync.fulfilled, (state, action)=>{
             console.log('DONE!')
             state.campuses = action.payload
+            state.loading = false
             
         })
         builder.addCase(fetchCampusesAsync.pending, (state,action)=> {
             console.log("pending")
+            state.loading = true
         })
         builder.addCase(fetchSingleCampus.pending, (state,action)=>{
             console.log("pending")
+            state.loading = true
         })
         builder.addCase(fetchSingleCampus.fulfilled, (state, action)=>{
             console.log('DONE!')
+            state.loading = false
             state.campus = action.payload
+
             
         })
     }
@@ -48,6 +52,14 @@ export const selectCampuses = (state) => {
 
 export const selectCampus = (state) => {
     return state.campuses.campus
+}
+
+export const studentsOfCampus = (state) => {
+    return state.campuses.campus.Students
+}
+
+export const isLoading = (state) => {
+    return state.campuses.loading
 }
 
 export default campusesSlice.reducer

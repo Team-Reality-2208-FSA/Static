@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Students } = require("../db")
+const { Students, Campuses } = require("../db")
 const { Op } = require("sequelize")
 
 router.get('/', async (req,res,next)=>{
@@ -16,6 +16,7 @@ router.get("/:id", async (req,res,next)=>{
             }
         }
     })
+
     res.send(student)
 })
 

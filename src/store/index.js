@@ -4,7 +4,7 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import campusesSlice from './campusesSlice'
-import  studentsSlice  from './StudentsSlice'
+import studentsSlice  from './studentsSlice'
 
 const store = configureStore({
   reducer: {

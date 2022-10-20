@@ -8,9 +8,14 @@ router.get('/', async (req,res,next)=>{
 router.get("/:campusId", async (req,res,next)=>{
     const campusId = req.params.campusId
     const campus = await Campuses.findAll({
-        include: Students,
-        where: {
-            id: campusId
+        include: {
+            model: Students,
+            where: {
+                CampusId: campusId
+            },
+            where: {
+                id: campusId,
+            }
         }
     })
     res.send(campus[0])
