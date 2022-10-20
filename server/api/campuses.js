@@ -7,7 +7,6 @@ router.get('/', async (req,res,next)=>{
 })
 router.get("/:campusId", async (req,res,next)=>{
     const campusId = req.params.campusId
-    console.log("id in get request", campusId)
     try {
     const campus = await Campuses.findAll({
         include: {
@@ -21,7 +20,6 @@ router.get("/:campusId", async (req,res,next)=>{
             }
         
     })
-    console.log(campus[0])
     res.send(campus[0])
 } catch(err) {
     console.log("Error in apis/campuses" , err)

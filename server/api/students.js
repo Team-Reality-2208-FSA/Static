@@ -11,13 +11,17 @@ router.get("/:id", async (req,res,next)=>{
     const stuId = req.params.id
     const student = await Students.findOne({
         where: {
-            id: {
-                [Op.eq]: stuId
-            }
+            id:  stuId
         }
     })
-
-    res.send(student)
+    const CampusId = student.dataValues.CampusId
+    const stusCampus = await Campuses.findOne({
+        where: {
+            id: CampusId
+        }
+    })
+    console.log(stusCampus)
+    res.status(200).send({student:student, campus:stusCampus})
 })
 
 module.exports = router

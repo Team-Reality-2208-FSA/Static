@@ -3,36 +3,24 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchSingleStudent, selectStudent, stuIsLoading } from "../store/studentsSlice";
-import { fetchSingleCampus, isLoading, selectCampus } from "../store/CampusesSlice";
+
 
 
 const SingleStudent = () => {
     const dispatch = useDispatch()
     const { stuId } = useParams()
     
-
     useEffect(()=>{
         dispatch(fetchSingleStudent(stuId))
     }, [dispatch])
 
-    const campLoading = useSelector(isLoading)
     const stuLoading = useSelector(stuIsLoading)
+    const singleStudent = useSelector(selectStudent)
 
-    useEffect(()=>{
-        dispatch(fetchSingleCampus(CampusId))
-    },[stuLoading])
-
-    const student = useSelector(selectStudent)
-    const { CampusId } = student
-    const campus = useSelector(selectCampus)
+    const campus = singleStudent.campus
+    const student = singleStudent.student
     
-
-    console.log("campus selector is loading", campLoading)
-    console.log("student selector is loading", stuLoading)
-    console.log("student state in StudentSlice",student)
-    console.log("campus state in CampusSlice", campus)
-    
-    if(!campLoading && !stuLoading) {
+    if(!stuLoading) {
     return (
         <>
             <h1 className="studentsOfCampusName">{student.firstName} {student.lastName}</h1>
@@ -44,5 +32,6 @@ const SingleStudent = () => {
     )
 }
 }
+
 
 export default SingleStudent

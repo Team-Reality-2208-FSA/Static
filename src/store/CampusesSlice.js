@@ -13,9 +13,8 @@ export const fetchCampusesAsync = createAsyncThunk("fetchCampusesAsync", async (
 })
 
 export const fetchSingleCampus = createAsyncThunk("fetchSingleCampus", async (id)=> {
-    console.log("id from fetch single campus", id)
     const { data }  = await axios.get(`/api/campuses/${id}`)
-    console.log("campus returned with above id:", id, data.id)
+
     return data
 } )
 
@@ -26,17 +25,17 @@ export const campusesSlice = createSlice({
     reducers: {},
     extraReducers:(builder)=>{
         builder.addCase(fetchCampusesAsync.fulfilled, (state, action)=>{
-            console.log('Campuses aqquired!')
+            //console.log('Campuses aqquired!')
             state.campuses = action.payload
             state.loading = false
             
         })
         builder.addCase(fetchCampusesAsync.pending, (state,action)=> {
-            console.log("Campuses is pending")
+            //console.log("Campuses is pending")
             state.loading = true
         })
         builder.addCase(fetchSingleCampus.pending, (state,action)=>{
-            console.log("Campus is pending")
+            //console.log("Campus is pending")
             state.loading = true
         })
         builder.addCase(fetchSingleCampus.fulfilled, (state, action)=>{
