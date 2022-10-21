@@ -23,6 +23,11 @@ export const fetchSingleStudent = createAsyncThunk("fetchSingleStudent", async (
     return data
 } )
 
+export const postStudent = createAsyncThunk("postStudent", async (sub)=>{
+    const { data } =await axios.post('/api/students', sub)
+    return data
+})
+
 
 
 export const studentsSlice = createSlice({
@@ -49,6 +54,10 @@ export const studentsSlice = createSlice({
         builder.addCase(fetchSingleStudent.pending, (state, action)=> {
             //console.log("Student pending")
             state.loading = true
+        })
+
+        builder.addCase(postStudent.fulfilled, (state,action)=>{
+            state.students.push(action.payload)
         })
     }
 })

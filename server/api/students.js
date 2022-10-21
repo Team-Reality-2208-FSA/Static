@@ -23,5 +23,9 @@ router.get("/:id", async (req,res,next)=>{
     console.log(stusCampus)
     res.status(200).send({student:student, campus:stusCampus})
 })
+router.post("/", async (req,res,next)=>{
+    const newStudent = await Students.create(req.body)
+    res.send(newStudent)
+})
 
 module.exports = router

@@ -18,6 +18,7 @@ const SingleCampus = () => {
 
     const loading = useSelector(isLoading)
     const campus = useSelector(selectCampus)
+    
    
     if(!loading) {
     return (

@@ -48,7 +48,9 @@ export const campusesSlice = createSlice({
             state.campus = action.payload
         })
         builder.addCase(postCampus.fulfilled, (state,action)=>{
+            console.log(state.campuses.campuses)
             state.campuses.push(action.payload)
+            
         })
     }
 })
@@ -58,10 +60,6 @@ export const selectCampuses = (state) => {
 
 export const selectCampus = (state) => {
     return state.campuses.campus
-}
-
-export const studentsOfCampus = (state) => {
-    return state.campuses.campus.Students
 }
 
 export const isLoading = (state) => {
