@@ -28,4 +28,15 @@ router.post("/", async (req,res,next)=>{
     res.send(newStudent)
 })
 
+router.delete('/:studentId', async (req,res,next)=>{
+    const studentId = req.params.studentId
+    const deleted = await Students.destroy({
+        where: {
+            id: studentId
+        }
+    })
+    console.log(deleted)
+    res.sendStatus(200)
+})
+
 module.exports = router

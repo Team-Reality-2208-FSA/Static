@@ -28,6 +28,11 @@ export const postStudent = createAsyncThunk("postStudent", async (sub)=>{
     return data
 })
 
+export const deleteStudent = createAsyncThunk("deleteStudent", async (id)=>{
+    const { data } = await axios.get(`api/students/${id}`)
+    await axios.delete(`/api/students/${id}`)
+    return data
+})
 
 
 export const studentsSlice = createSlice({
@@ -58,6 +63,15 @@ export const studentsSlice = createSlice({
 
         builder.addCase(postStudent.fulfilled, (state,action)=>{
             state.students.push(action.payload)
+        })
+        builder.addCase(deleteStudent.fulfilled, (state,action)=>{
+            console.log(action.payload.student)
+            const newStudents = state.students.filter((obj)=>{
+                if(obj.id !== action.payload.student.id) {
+                    return obj
+                }
+            })
+            state.students = newStudents
         })
     }
 })

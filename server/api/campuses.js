@@ -7,7 +7,6 @@ router.get('/', async (req,res,next)=>{
 })
 router.get("/:campusId", async (req,res,next)=>{
     const campusId = req.params.campusId
-    console.log(campusId)
     try {
     const campus = await Campuses.findAll({
         include: {
@@ -33,6 +32,17 @@ router.post('/', async (req, res, next)=>{
     
     const newCampus = await Campuses.create(req.body)
     res.send(newCampus)
+})
+
+router.delete('/:campusId', async (req,res,next)=>{
+    const campusId = req.params.campusId
+    const deleted = await Campuses.destroy({
+        where: {
+            id: campusId
+        }
+    })
+    console.log(deleted)
+    res.sendStatus(200)
 })
 
 module.exports = router

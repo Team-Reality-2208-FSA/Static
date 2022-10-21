@@ -1,11 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStudentsAsync } from "../store/studentsSlice";
+import { fetchStudentsAsync} from "../store/studentsSlice";
 import { selectStudents } from "../store/studentsSlice";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { postStudent } from "../store/studentsSlice";
+import { postStudent, deleteStudent } from "../store/studentsSlice";
 
 const AllStudents = ()=> {
     const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const AllStudents = ()=> {
     
     useEffect(()=>{
         dispatch(fetchStudentsAsync())
-    },[dispatch])
+    },[])
 
     async function handleSubmit(submission) {
         submission.preventDefault()
@@ -35,13 +35,19 @@ const AllStudents = ()=> {
         })
         )
     }
+    async function handleDelete(x) {
+        x.preventDefault()
+        const id = x.target.value
+        console.log(id)
+        dispatch(deleteStudent(id))
+    }
 
     return (
         <>
             <h1 id="allStudents">All Students</h1>
             <ul>
                 {students.map((student)=>{
-                    return <li className="students" key={student.id}><Link to={`/students/${student.id}`}><h3>{student.firstName} {student.lastName}</h3><img className="studentImgs" src={student.imageUrl}/></Link></li>
+                    return <li className="students" key={student.id}><Link to={`/students/${student.id}`}><h3>{student.firstName} {student.lastName}</h3><img className="studentImgs" src={student.imageUrl}/></Link><button value={student.id} onClick={handleDelete}>X</button></li>
                 })}
             </ul>
             <form className="studentForm" onSubmit={handleSubmit}>
