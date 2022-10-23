@@ -21,7 +21,6 @@ router.get("/:campusId", async (req,res,next)=>{
             }
         
     })
-    console.log(campus)
     res.send(campus[0])
 } catch(err) {
     console.log("Error in apis/campuses" , err)
@@ -43,6 +42,20 @@ router.delete('/:campusId', async (req,res,next)=>{
     })
     console.log(deleted)
     res.sendStatus(200)
+})
+
+router.put("/:campusId", async (req,res,next)=>{
+    const campusId = req.params.campusId
+    const campusToUpdate = req.body
+    console.log("trying to update with:", campusToUpdate)
+    const updated = await Campuses.update(req.body, {
+        where: {
+            id:campusId
+        },
+        returning: true,
+    })
+    const updatedCampus = updated[1][0].dataValues
+    res.status(200).send(updatedCampus)
 })
 
 module.exports = router

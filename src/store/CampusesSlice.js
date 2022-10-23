@@ -30,6 +30,18 @@ export const deleteCampus = createAsyncThunk("deleteCampus", async (id)=>{
     return data
 })
 
+export const updateCampus = createAsyncThunk("upadteCampus", async(sub)=>{
+    console.log("upadtae thunk firing with:", sub)
+    const { data } = await axios.put(`/api/campuses/${sub.campId}`, sub)
+    console.log("data returned from update http request:", data)
+    return data
+})
+
+export const unregisterStudent = createAsyncThunk("unregisterStudent", async (id)=>{
+    const { data } = await axios.put(`/api/students/${id}`)
+    return data
+})
+
 export const campusesSlice = createSlice({
     name: "campuses",
     initialState,
@@ -69,6 +81,24 @@ export const campusesSlice = createSlice({
                 }
             })
             state.campuses = newCampuses
+        })
+        builder.addCase(updateCampus.pending, (state,action)=>{
+            console.log("Update Pending")
+            state.loading = true
+        })
+        builder.addCase(updateCampus.fulfilled, (state,action)=>{
+            state.loading = false
+            console.log("received from axios thunk on update:", action.payload)
+            state.campus = action.payload
+        })
+        builder.addCase(unregisterStudent.fulfilled, (state, action)=>{
+            const unregister = action.payload.id
+            const students = state.campus.Students.filter((stu)=>{
+                if(stu.id !== unregister) {
+                    return stu
+                }
+            })
+            state.campus.Students = students
         })
     }
 })

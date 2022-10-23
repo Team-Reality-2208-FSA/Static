@@ -24,16 +24,21 @@ export const fetchSingleStudent = createAsyncThunk("fetchSingleStudent", async (
 } )
 
 export const postStudent = createAsyncThunk("postStudent", async (sub)=>{
-    const { data } =await axios.post('/api/students', sub)
+    const { data } = await axios.post('/api/students', sub)
     return data
 })
 
 export const deleteStudent = createAsyncThunk("deleteStudent", async (id)=>{
-    const { data } = await axios.get(`api/students/${id}`)
+    const { data } = await axios.get(`/api/students/${id}`)
     await axios.delete(`/api/students/${id}`)
     return data
 })
 
+export const updateStudent = createAsyncThunk("updateStudent", async (sub)=>{
+    console.log( "sub:", sub)
+    const { data } = await axios.put(`/api/students/update/${sub.stuId}`, sub)
+    return data
+})
 
 export const studentsSlice = createSlice({
     name: "students",
@@ -51,6 +56,7 @@ export const studentsSlice = createSlice({
         })
         builder.addCase(fetchSingleStudent.fulfilled, (state, action)=>{
             console.log("Student aqquired!")
+            console.log(action.payload)
             state.loading = false
             state.student = action.payload
             state.studentCampusId = state.students.CampusId
@@ -73,6 +79,15 @@ export const studentsSlice = createSlice({
             })
             state.students = newStudents
         })
+        builder.addCase(updateStudent.pending, (state, action)=>{
+            state.loading = true
+        })
+        builder.addCase(updateStudent.fulfilled, (state,action)=>{
+            console.log("builder case reached with", action.payload)
+            state.student = action.payload
+            state.loading = false
+        })
+        
     }
 })
 export const selectStudents = (state) => {
@@ -81,6 +96,7 @@ export const selectStudents = (state) => {
 
 export const selectStudent = (state) => {
     return state.students.student;
+    console.log(state)
 }
 export const stuIsLoading = (state) => {
     return state.students.loading

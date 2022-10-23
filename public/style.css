@@ -117,3 +117,21 @@
     width: 20em;
     border: 5px solid lightgray
   }
+
+  .updateCampusForm {
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    height: 30em;
+    width: 20em;
+    border: 5px solid lightgray
+  }
+
+  .updateStudentForm {
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    height: 30em;
+    width: 20em;
+    border: 5px solid lightgray
+  }

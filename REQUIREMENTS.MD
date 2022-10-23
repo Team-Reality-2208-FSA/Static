@@ -106,21 +106,21 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Frontend
 
-- [ ] In the all-campuses view, include an `X` button next to each campus
+- [X] In the all-campuses view, include an `X` button next to each campus
 - Clicking the `X` button should:
 
-  - [ ] Make an AJAX request that causes that campus to be removed from database
-  - [ ] Remove the campus from the list of campuses without needing to refresh the page
+  - [X] Make an AJAX request that causes that campus to be removed from database
+  - [X] Remove the campus from the list of campuses without needing to refresh the page
 
-- [ ] In the all-students view, include an `X` button next to each student
+- [X] In the all-students view, include an `X` button next to each student
 - Clicking the `X` button should:
-  - [ ] Make an AJAX request that causes that student to be removed from database
-  - [ ] Remove the student from the list of students without needing to refresh the page
+  - [X] Make an AJAX request that causes that student to be removed from database
+  - [X] Remove the student from the list of students without needing to refresh the page
 
 #### Backend
 
-- [ ] Write a route to remove a campus (based on its id)
-- [ ] Write a route to remove a student (based on their id)
+- [X] Write a route to remove a campus (based on its id)
+- [X] Write a route to remove a student (based on their id)
 
 Congrats! You have completed your fourth vertical slice! Make sure to `commit -m "Feature: Remove Campus and Student"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
@@ -132,23 +132,23 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form updating _at least_ a campus's name and address
-- [ ] Display this component as part of the single-campus view, alongside the single campus
+- [X] Write a component to display a form updating _at least_ a campus's name and address
+- [X] Display this component as part of the single-campus view, alongside the single campus
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that campus to be updated in the database
-  - [ ] Update the campus in the current view without needing to refresh the page
-- [ ] In the single-campus view, display an `Unregister` button next to each of its students, which removes the student from the campus (in the database as well as this view); hint: the student is still in the database but is no longer associated with the campus
+- [X] Make an AJAX request that causes that campus to be updated in the database
+- [X] Update the campus in the current view without needing to refresh the page
+- [X] In the single-campus view, display an `Unregister` button next to each of its students, which removes the student from the campus (in the database as well as this view); hint: the student is still in the database but is no longer associated with the campus
 
-- [ ] Write a component to display a form updating _at least_ a student's first and last names, and email
-- [ ] Display this component as part of the single-student view, alongside the single student
+- [X] Write a component to display a form updating _at least_ a student's first and last names, and email
+- [X] Display this component as part of the single-student view, alongside the single student
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that student to be updated in the database
-  - [ ] Update the student in the current view without needing to refresh the page
+  - [X] Make an AJAX request that causes that student to be updated in the database
+  - [X] Update the student in the current view without needing to refresh the page
 
 #### Backend
 
-- [ ] Write a route to update an existing campus
-- [ ] Write a route to update an existing student
+- [X] Write a route to update an existing campus
+- [X] Write a route to update an existing student
 
 </details>
 
