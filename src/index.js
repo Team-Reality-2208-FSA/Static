@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 const container = document.getElementById('root')
 const root = createRoot(container)
-
+// root for react and routers as well as redux
 root.render(
   <Provider store={store}>
     <Router>

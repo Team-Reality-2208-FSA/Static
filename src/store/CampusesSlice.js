@@ -7,11 +7,11 @@ const initialState = {
     loading: true
 }
 
+// various async thunks for handling AJAX requests
 export const fetchCampusesAsync = createAsyncThunk("fetchCampusesAsync", async ()=>{
     const { data } = await axios.get("/api/campuses")
     return data
 })
-
 export const fetchSingleCampus = createAsyncThunk("fetchSingleCampus", async (id)=> {
     console.log("fetch campuses firing")
     const { data }  = await axios.get(`/api/campuses/${id}`)
@@ -23,25 +23,22 @@ export const postCampus = createAsyncThunk("postCampus", async (sub)=>{
     console.log("data received from Ajax request", data)
     return data
 })
-
 export const deleteCampus = createAsyncThunk("deleteCampus", async (id)=>{
     const { data } = await axios.get(`api/campuses/${id}`)
     await axios.delete(`/api/campuses/${id}`)
     return data
 })
-
 export const updateCampus = createAsyncThunk("upadteCampus", async(sub)=>{
     console.log("upadtae thunk firing with:", sub)
     const { data } = await axios.put(`/api/campuses/${sub.campId}`, sub)
     console.log("data returned from update http request:", data)
     return data
 })
-
 export const unregisterStudent = createAsyncThunk("unregisterStudent", async (id)=>{
     const { data } = await axios.put(`/api/students/${id}`)
     return data
 })
-
+// campus slice with builder cases for setting state with information retrieved from thunks and handling pending cases
 export const campusesSlice = createSlice({
     name: "campuses",
     initialState,
@@ -67,10 +64,19 @@ export const campusesSlice = createSlice({
             state.campus = action.payload
            
         })
+        builder.addCase(postCampus.pending, (state,action)=>{
+            console.log("adding campus pending")
+            state.loading = true
+        })
         builder.addCase(postCampus.fulfilled, (state,action)=>{
             //console.log(state.campuses.campuses)
             state.campuses.push(action.payload)
+            state.loading = false
             
+        })
+        builder.addCase(deleteCampus.pending, (state,action)=>{
+            console.log("deleteing campus from data base")
+            state.loading = true
         })
         builder.addCase(deleteCampus.fulfilled, (state,action)=>{
             // actiion payload i scorrect campus that got deleted from db
@@ -81,6 +87,7 @@ export const campusesSlice = createSlice({
                 }
             })
             state.campuses = newCampuses
+            state.loading = false
         })
         builder.addCase(updateCampus.pending, (state,action)=>{
             console.log("Update Pending")
@@ -91,6 +98,10 @@ export const campusesSlice = createSlice({
             console.log("received from axios thunk on update:", action.payload)
             state.campus = action.payload
         })
+        builder.addCase(unregisterStudent.pending, (state,action)=>{
+            console.log("unregistering student")
+            state.loading = true
+        })
         builder.addCase(unregisterStudent.fulfilled, (state, action)=>{
             const unregister = action.payload.id
             const students = state.campus.Students.filter((stu)=>{
@@ -99,19 +110,19 @@ export const campusesSlice = createSlice({
                 }
             })
             state.campus.Students = students
+            state.loading = false
         })
     }
 })
+
+// selectors to retrieve state
 export const selectCampuses = (state) => {
     return state.campuses.campuses;
 };
-
 export const selectCampus = (state) => {
     return state.campuses.campus
 }
-
 export const isLoading = (state) => {
     return state.campuses.loading
 }
-
 export default campusesSlice.reducer

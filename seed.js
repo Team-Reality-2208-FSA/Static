@@ -2,7 +2,7 @@ const { green, red } = require('chalk')
 const { db, Students, Campuses } = require('./server/db/index')
 
 
-const addCampuses = async() => {
+const addCampuses = async () => {
   const USC = {
     name: "University of South Carolina",
     imageUrl: "https://www.sc.edu/imgs/background/background-campus-tours-31.jpg",
@@ -37,7 +37,7 @@ const addCampuses = async() => {
   await Campuses.create(Berklee)
 }
 
-const addStudents = async() => {
+const addStudents = async () => {
   const Aang = {
     firstName: "Avatar",
     lastName: "Aang",
@@ -86,10 +86,8 @@ const seed = async () => {
 
   } catch (err) {
     console.log(red(err))
-  } 
+  }
 }
-
-
 
 // If this module is being required from another module, then we just export the
 // function, to be used as necessary. But it will run right away if the module

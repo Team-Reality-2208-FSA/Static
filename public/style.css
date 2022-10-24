@@ -21,7 +21,7 @@
     background-color: #333333;
     color: #c0c0c0;
     display: flex;
-    height: 80px;
+    height: 50px;
     padding: 10px;
   }
   
@@ -31,84 +31,95 @@
     flex-direction: column;
     justify-content: center;
   }
-  .campusImgs {
-    max-width: 20vw;
-    max-height: 20vh;
+  .links{
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+    height: 8vh;
+    margin-bottom: 0px;
   }
-  .campuses {
-    border: 8px solid gray;
+  .link {
+    text-decoration: none;
+    border: 4px solid darkgray;
+    height: 6vh;
+    padding: 10px;
   }
 
+  .link:link {
+    color: #333333;
+  }
+  .link:visited {
+    color: #5e5e5e;
+  }
+  .link:hover {
+    background-color: antiquewhite;
+  }
+  .campusImgs {
+    width: 20vw;
+    height: 20vh;
+    border: 3px solid darkgray
+  }
+  .allCampusesView {
+    display: flex;
+    margin-top: 0;
+    margin-left: 20px;
+  }
   ul {
     display: flex;
+    flex-wrap: wrap;
+    border: 3px solid rgb(148, 148, 148);
+    width: 60vw;
     list-style: none;
     justify-content: space-evenly;
+    margin-top: 0;
   }
 
-  #allCampuses {
+  #allCampusesh2 {
     margin-left: 12vw;
-  }
-
-  .studentImgs {
-    max-width: 20vw;
-    max-height: 20vh;
-  }
-  .students {
-    border: 8px solid gray;
-  }
-
-  #allStudents {
-    margin-left: 12vw;
-  }
-
-  .singleCampusName {
-
-  }
-
-  .singleCampusImg {
-    max-width: 60vw;
-    max-height: 50vh;
-  }
-
-  .singleCampusDesc {
-    width: 50vw;
-    
-  }
-
-  .singleCampusAddress {
-    width: 20vw;
-  }
-
-  .studentsOfCampusLi {
-    border: 6px solid lightgray;
-    height: 25em;
-    width: 28em
-  }
-  .studentsOfCampusImg {
-    width: 20em;
-    height: 15em
-  }
-  .studentsOfCampusEmail {
-    
-  }
-  .studentsOfCampusGpa {
-    
-  }
-  .studentsOfCampus {
-    border: 6px solid lightgray;
-    display: flex;
-    align-content: flex-start;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .campusForm {
     display: flex;
     flex-direction: column;
     margin: 2em;
-    height: 30em;
+    height: 15em;
     width: 20em;
     border: 5px solid lightgray
   }
+  .campusNames {
+    text-decoration: none;
+    color: #333333;
+  }
+  .campush3s {
+    margin-bottom: 2;
+    height: 3px;
+  }
+  .campuses {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+  }
 
+  #addCampusButton {
+    margin-top: 20px;
+  }
+
+
+
+
+  #allStudentsh2 {
+    margin-left: 12vw;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .allStudentsView {
+    display: flex;
+    margin-top: 0;
+    margin-left: 20px;
+  }
   .studentForm {
     display: flex;
     flex-direction: column;
@@ -117,16 +128,56 @@
     width: 20em;
     border: 5px solid lightgray
   }
-
-  .updateCampusForm {
+  .students {
     display: flex;
     flex-direction: column;
-    margin: 2em;
-    height: 30em;
-    width: 20em;
-    border: 5px solid lightgray
+    text-align: center;
+    margin-top: 10px;
+  }
+  .studentsImgs {
+    margin-top: 0;
+    width: 20vw;
+    height: 20vh;
+    border: 3px solid darkgray
+  }
+  .studentsNames {
+    text-decoration: none;
+    color: #333333;
+  }
+  .studentsh3s {
+    margin-bottom: 2;
+    height: 3px;
   }
 
+
+  
+  .singleStudentView {
+    display: flex;
+  }
+  .singleStudent {
+    border:#a19d9d;
+    margin-left: 10em;
+  }
+  .studentName {
+    height: 8px;
+    
+  }
+  .studentImg {
+    height: 20em;
+    width: 25em;
+  }
+  .studentEmail {
+    margin-top: 2px;
+    height: 6px;
+  }
+  .campuslink {
+    text-decoration: none;
+    color:#333333
+  }
+  .campuslink:hover {
+    text-decoration: none;
+    color:#75614a
+  }
   .updateStudentForm {
     display: flex;
     flex-direction: column;
@@ -135,3 +186,68 @@
     width: 20em;
     border: 5px solid lightgray
   }
+
+
+
+  .singleCampusView {
+    display: flex;
+    justify-content: space-evenly
+  }
+  .singleCampus {
+    border:#a19d9d;
+    margin-left: 10em;
+  }
+  .singleCampusName {
+    height: 8px;
+    
+  }
+  .singleCampusImg {
+    height: 20em;
+    width: 25em;
+    border: 3px solid darkgray;
+  }
+  .singleCampusAddress {
+    margin-top: 2px;
+    height: 6px;
+  }
+  .singleCampusDesc {
+    width: 40vw;
+    max-width: 425px;
+    
+  }
+  .studentlink {
+    text-decoration: none;
+    color:#333333
+  }
+  .studentlink:hover {
+    text-decoration: none;
+    color:#75614a
+  }
+  .updateCampusForm {
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    height: 30em;
+    width: 20em;
+    border: 5px solid lightgray
+  }
+  .studentsOfCampus{
+    border: 4px solid rgb(8, 8, 8);
+    margin-left: 20vw;
+    width: 25em;
+
+  }
+  .studentsOfCampusLi {
+    display: flex;
+    justify-content: space-between;
+  }
+  .stuh3 {
+    margin-left: 20vw ;
+  }
+  .unregisterButton {
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+
+  

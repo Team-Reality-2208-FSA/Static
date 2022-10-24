@@ -6,6 +6,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import campusesSlice from './campusesSlice'
 import studentsSlice  from './studentsSlice'
 
+// main redux store
 const store = configureStore({
   reducer: {
     campuses: campusesSlice,

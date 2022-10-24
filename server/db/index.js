@@ -15,7 +15,6 @@ const Students = require("./Students")
 Students.belongsTo(Campuses)
 Campuses.hasMany(Students)
 
-
 module.exports = {
   // Include your models in this exports object as well!
   db,

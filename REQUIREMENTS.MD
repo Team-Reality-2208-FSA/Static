@@ -32,7 +32,7 @@ The requirements below are broken into separate **tiers**, which model the way w
   - [X] email - not empty or null; must be a valid email
   - [X] imageUrl - with a default value
   - [X] gpa - decimal between 0.0 and 4.0
-*********-   [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students ***********
+  - [X] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
 #### Seed
 
@@ -56,7 +56,7 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 
 - Write a component to display a single student with the following information:
 - [X] The student's full name, email, image, and gpa
-- [ ] The name of their campus (or a helpful message if they don't have one)
+- [X] The name of their campus (or a helpful message if they don't have one)
 - [X] Display the appropriate student when the url matches `/students/:studentId`
 - [X] Clicking on a student from the all-students view should navigate to show that student in the single-student view
 
@@ -81,9 +81,8 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 - [X] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
 - [X] Display this component as part of the all-campuses view, alongside the list of campuses
 - Submitting the form with a valid name/address should:
-
-  - [X] Make an AJAX request that causes the new campus to be persisted in the database
-  - [X] Add the new campus to the list of campuses without needing to refresh the page
+- [X] Make an AJAX request that causes the new campus to be persisted in the database
+- [X] Add the new campus to the list of campuses without needing to refresh the page
 
 - [X] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
 - [X] Display this component as part of the all-students view, alongside the list of students
