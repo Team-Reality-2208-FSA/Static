@@ -1,8 +1,7 @@
-import React from 'react'
-import { ALLFBI } from "./"
-import { Routes, Route } from 'react-router-dom'
-
-
+import React from "react";
+import { ALLFBI } from "./";
+import { Routes, Route } from "react-router-dom";
+import Map from "./Map";
 /* 
     This is you entry point for your routes
 */
@@ -12,14 +11,13 @@ const Main = () => {
       <nav>Welcome!</nav>
       <main>
         <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-        
       </main>
       <Routes>
-        <Route path="/FBI" element={< ALLFBI />} />
+        <Route path="/" element={<Map />} />
+        <Route path="/FBI" element={<ALLFBI />} />
       </Routes>
     </div>
+  );
+};
 
-  )
-}
-
-export default Main
+export default Main;
