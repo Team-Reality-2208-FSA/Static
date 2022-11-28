@@ -1,15 +1,11 @@
-
-import { configureStore } from '@reduxjs/toolkit'
-import FBISlice from './FBISlice'
-
+import { configureStore } from "@reduxjs/toolkit";
+import FbiSlice from "./FBISlice";
 
 // main redux store
 const store = configureStore({
   reducer: {
-    FBI: FBISlice,
-    
-    
+    FBI: FbiSlice.reducer,
   },
-})
+});
 
-export default store
+export default store;
