@@ -21,39 +21,45 @@ nav {
   background-color: #333333;
   color: #c0c0c0;
   display: flex;
-  height: 50px;
+  justify-content: space-between;
+  height: 70px;
   padding: 10px;
 }
+.nav-leftSide {
+  display: flex;
+  font-size: 3.5vmin;
+}
+.nav-middle-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 60vmin;
+  font-size: 2.25vmin;
+}
+.links {
+  text-decoration: none;
+  color: white;
+}
 
+.links:hover {
+  color: lightgray;
+}
+.homePageLoginBtn {
+  padding: 0.5vmin;
+  width: 20vmin;
+  font-size: 2.75vmin;
+}
+.homePageLoginBtn:hover {
+  cursor: pointer;
+}
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.links {
-  display: flex;
-  justify-content: space-between;
-  width: 40vw;
-  height: 8vh;
-  margin-bottom: 0px;
-}
-.link {
-  text-decoration: none;
-  border: 4px solid darkgray;
-  height: 6vh;
-  padding: 10px;
-}
 
-.link:link {
-  color: #333333;
-}
-.link:visited {
-  color: #5e5e5e;
-}
-.link:hover {
-  background-color: antiquewhite;
-}
 .campusImgs {
   width: 20vw;
   height: 20vh;
