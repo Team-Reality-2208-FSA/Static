@@ -50,12 +50,11 @@ nav {
   width: 20vmin;
   font-size: 2.4vmin;
   border-radius: 5px;
-  border: white dotted 2px;
+  border: none;
 }
 .homePageLoginBtn:hover {
   cursor: pointer;
-  background-color: white;
-  border: white solid 3px;
+  background-color: lightgray;
 }
 footer {
   display: flex;
