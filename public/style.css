@@ -53,6 +53,31 @@ nav {
 .homePageLoginBtn:hover {
   cursor: pointer;
 }
+footer {
+  display: flex;
+  background-color: #333333;
+  color: #c0c0c0;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20vh;
+}
+
+.footer-column {
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 18vh;
+  font-size: 2vmin;
+}
+
+.footer-icon {
+  width: 3vmin;
+}
+.footer-icon:hover {
+  cursor: pointer;
+}
+
 main {
   align-items: center;
   display: flex;
@@ -250,6 +275,7 @@ ul {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  height: 70vh;
 }
 .zipCodeForm {
   margin-bottom: 2vh;
