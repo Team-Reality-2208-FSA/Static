@@ -17,12 +17,13 @@ function Map() {
     <div className="map-container">
       <form className="zipCodeForm">
         <label>
-          <input type="text" name="name" placeholder="Enter zip code" />
+          <input type="text" name="name" placeholder="Enter county name" />
         </label>
         <input type="submit" value="Find" />
       </form>
 
       <MapContainer
+        className="mapView"
         center={[51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={false}
