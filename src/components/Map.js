@@ -14,7 +14,14 @@ const crimes = [
 
 function Map() {
   return (
-    <div style={{ background: "red", height: 300 }}>
+    <div className="map-container">
+      <form className="zipCodeForm">
+        <label>
+          <input type="text" name="name" placeholder="Enter zip code" />
+        </label>
+        <input type="submit" value="Find" />
+      </form>
+
       <MapContainer
         center={[51.505, -0.09]}
         zoom={13}
