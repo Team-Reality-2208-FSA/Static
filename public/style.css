@@ -293,4 +293,6 @@ ul {
 }
 .mapView {
   margin-bottom: 10vmin;
+  height: 75vmin;
+  width: 75vmin;
 }
