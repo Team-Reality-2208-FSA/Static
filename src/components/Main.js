@@ -41,6 +41,14 @@ const Main = () => {
       </Routes>
 
       <footer>
+        <div className="footer-column-name">
+          <div>S</div>
+          <div>T</div>
+          <div>A</div>
+          <div>T</div>
+          <div>I</div>
+          <div>C</div>
+        </div>
         <div className="footer-column">
           <div>FOLLOW US</div>
           <div>

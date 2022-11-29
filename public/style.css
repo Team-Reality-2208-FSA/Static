@@ -48,7 +48,7 @@ nav {
 .homePageLoginBtn {
   padding: 0.5vmin;
   width: 20vmin;
-  font-size: 2.75vmin;
+  font-size: 2.4vmin;
 }
 .homePageLoginBtn:hover {
   cursor: pointer;
@@ -59,7 +59,7 @@ footer {
   color: #c0c0c0;
   justify-content: space-evenly;
   align-items: center;
-  height: 20vh;
+  height: 23vh;
 }
 
 .footer-column {
@@ -69,6 +69,14 @@ footer {
   text-align: center;
   height: 18vh;
   font-size: 2vmin;
+}
+
+.footer-column-name {
+  text-align: center;
+  font-size: 2.5vmin;
+  border: solid lightgray 1px;
+  padding: 0.5vmin;
+  margin-top: 1vmin;
 }
 
 .footer-icon {
