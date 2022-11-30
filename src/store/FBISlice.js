@@ -3,12 +3,16 @@ import axios from "axios";
 
 //uMb4ZhdgjKJqrGVqx7G3DhpOWbW2YFZ36iEgxRca
 
-const initialState = {};
+const initialState = {
+Counties: []
+
+
+};
 
 export const fetchFBI = createAsyncThunk("fetchFBI", async (userState) =>
 {
     const {data} = await axios.get(`https://api.usa.gov/crime/fbi/sapi/api/agencies/byStateAbbr/${userState}?API_KEY=uMb4ZhdgjKJqrGVqx7G3DhpOWbW2YFZ36iEgxRca`)
-    console.log(data)
+   
     return data
 })
 
@@ -17,17 +21,26 @@ export const fetchFBI = createAsyncThunk("fetchFBI", async (userState) =>
 export const fbiSlice = createSlice({
     name: "FBI",
     initialState,
-    reducers: {},
+    reducers: {
+        
+        
+
+
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchFBI.fulfilled, (state, action) => {
-    
-            state.FBI = action.payload
+            const FBI = action.payload
+            let MultiCounties = FBI.results.map((result) => result.county_name)
+            let SingleCounties = MultiCounties.filter((item, i, County) => County.indexOf(item) === i)
+
+             state.Counties = SingleCounties
+            
         }
         )}
         })
 
         export const selectFBI = (state) => {
-            return state.FBI;
+            return state.FBI.Counties;
           };
 
 

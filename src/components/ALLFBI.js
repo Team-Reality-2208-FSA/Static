@@ -2,35 +2,37 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFBI, selectFBI } from "../store/FBISlice"
-import { Link } from "react-router-dom";
+
+ 
+
+
 
 
 const ALLFBI = () => {
-    const FBI = useSelector(selectFBI);
-    console.log(FBI)    
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(fetchFBI("NJ"));
-      }, []);
 
+
+    const [chosenState, setChosenState] = useState("")
+    const dispatch = useDispatch();
+    const FBIData = useSelector(selectFBI);
+   
+        function onSubmit (event) {
+        event.preventDefault()
+
+        dispatch(fetchFBI(chosenState));
+       }
+       
     return (
         <>
-            {FBI ? FBI.map((result)=>(<h1>{
 
-                    result.ori
+            <form onSubmit= {onSubmit}>
+            <label htmlFor = "chosenState">State initials</label>
+            <input value = {chosenState} onChange = {(evt) => setChosenState(evt.target.value)} />
+                <button type = "submit" >Submit</button>
+            </form>
 
-            }</h1>
-
-                
-            ))
-            
-            
-            
-            
-            
-            : null}
-        </>
+            <select>{FBIData.map((county)=><option>{county}</option>)}</select>  
+             
+         </>
     )
 
     }
