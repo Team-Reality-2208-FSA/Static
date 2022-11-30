@@ -139,17 +139,18 @@ ul {
   align-items: center;
   margin-top: 10vmin;
   height: 70vh;
-  width: 90%;
+  width: 100%;
+  padding: 10vmin;
+  border: solid black 10px;
 }
 .statsForm {
-  border: solid black 1px;
   padding: 3vmin;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 30vmin;
-  height: auto;
+  height: 0vh;
 }
 
 .selectCounty {
@@ -172,4 +173,9 @@ button:hover {
 .stateInput {
   width: 50%;
   height: 5vmin;
+}
+.graphImg {
+  width: 60vmin;
+  padding: 4vmin;
+  border: solid black 1px;
 }

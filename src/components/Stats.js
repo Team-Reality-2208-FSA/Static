@@ -20,7 +20,10 @@ function Stats() {
     <>
       <div className="statsHeader">STATS</div>
       <div className="statsBody">
-        <img src="https://cdn.pixabay.com/photo/2012/04/16/12/26/chart-35773__340.png"></img>
+        <img
+          className="graphImg"
+          src="https://cdn.pixabay.com/photo/2012/04/16/12/26/chart-35773__340.png"
+        ></img>
 
         <div className="statsForm">
           <form>
