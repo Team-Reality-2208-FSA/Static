@@ -43,6 +43,15 @@ function Map() {
 
   return (
     <div className="map-container">
+      <h1>Welcome to Static!</h1>
+
+      <form className="zipCodeForm">
+        <label>
+          <input type="text" name="name" placeholder="Enter county name" />
+        </label>
+        <input type="submit" value="Find" />
+      </form>
+
       <MapContainer
         className="mapView"
         center={[38, -96]}
