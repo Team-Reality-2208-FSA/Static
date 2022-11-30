@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import FbiSlice from "./FBISlice";
+import CountySlice from "./CountySlice";
+import fbiSlice from "./FBISlice";
+
 
 // main redux store
 const store = configureStore({
   reducer: {
-    FBI: FbiSlice.reducer,
+    FBI: fbiSlice.reducer,
+     Counties: CountySlice.reducer
   },
 });
 
 export default store;
+
+
