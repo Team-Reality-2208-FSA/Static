@@ -34,6 +34,7 @@ const Main = () => {
           </div>
         </Link>
       </nav>
+      <main>{/* <h1>Welcome to Static!</h1> */}</main>
       <Routes>
         <Route path="/" element={<Map />} />
         <Route path="/FBI" element={<ALLFBI />} />
