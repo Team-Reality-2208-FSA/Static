@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import { useState } from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
+import {fetchCounties, selectGeoJson, selectGeoLoading} from '../store/CountySlice'
 
 
 
@@ -12,8 +13,11 @@ function Map() {
   const [onselect, setOnselect] = useState({});
   
   useEffect(()=>{
+    dispatch(fetchCounties('New York'))
   },[])
-
+  const counties = useSelector(selectGeoJson)
+  const loading = useSelector(selectGeoLoading)
+  console.log(counties)
   
 
   /* function determining what should happen onmouseover, this function updates our state*/
@@ -70,7 +74,9 @@ function Map() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    
     console.log(e)
+    
   }
 
   const mapStyle = {
@@ -81,6 +87,7 @@ function Map() {
 
 
   return (
+    
     <div className="map-container" >
       {!onselect.county && (
         <div className="crime-info-hover">
@@ -91,10 +98,10 @@ function Map() {
       {onselect.county && (
         <ul className="crime-info" >
           <li><strong>{onselect.county}</strong></li><br />
-          <li>Total Population:{onselect.total}</li>
-          <li>Men:{onselect.male}</li>
-          <li>Women:{onselect.female}</li>
-          <li>Intersex:{onselect.intersex}</li>
+          <li>Crime Rate:{onselect.total}</li>
+          <li>Murders{onselect.male}</li>
+          <li>Assaults{onselect.female}</li>
+          <li>Thefts{onselect.intersex}</li>
           <li>Population density:{onselect.density} people <br /> per square km</li>
         </ul>
       )}
@@ -113,9 +120,9 @@ function Map() {
           attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
           url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
-        {statesData && (
-          <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}
-          />)}
+        {!loading ? (
+          <GeoJSON data={counties} style={style} onEachFeature={onEachFeature}
+          />) : null }
       </MapContainer>
       <form className="zipCodeForm">
         <label htmlFor="county"></label>
