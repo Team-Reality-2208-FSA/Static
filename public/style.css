@@ -3,6 +3,7 @@
  * but feel free to change me to your heart's content!
  */
 
+/*MAIN COMPONENT START*/
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
@@ -38,13 +39,13 @@ nav {
   font-size: 2.25vmin;
 }
 .links {
-  text-decoration: none;
   color: white;
 }
 
 .links:hover {
   color: lightgray;
 }
+
 .homePageLoginBtn {
   padding: 0.5vmin;
   width: 20vmin;
@@ -89,20 +90,18 @@ footer {
   cursor: pointer;
 }
 
-main {
-  width: 100%;
-  display: flex;
-  
-  
-}
+/*MAIN COMPONENT END*/
 
+/*MAP COMPONENT START*/
 .map-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
+  height: 80vh;
 }
-.zipCodeForm {
+.stateInputForm {
   margin-bottom: 2vh;
 }
 .mapView {
@@ -110,3 +109,53 @@ main {
   height: 75vmin;
   width: 75vmin;
 }
+/*MAP COMPONENT END*/
+
+/*STATS COMPONENT START*/
+.statsBody {
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10vmin;
+  height: 70vh;
+  width: 100%;
+}
+.statsForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30vmin;
+  height: 0vh;
+}
+
+.selectCounty {
+  width: 20vmin;
+  text-align: center;
+}
+.inputLabel {
+  margin-top: 2vmin;
+}
+button:hover {
+  cursor: pointer;
+}
+.statsHeader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 5vmin;
+  margin-top: 2vmin;
+}
+.stateInput {
+  width: 50%;
+  height: 5vmin;
+}
+/*MAP COMPONENT END*/
+
+/*BARCHART COMPONENT START*/
+.barChart {
+  width: 60vmin;
+  height: auto;
+}
+/*BARCHART COMPONENT END*/

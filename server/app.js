@@ -3,6 +3,7 @@ const path = require('path')
 const cors = require('cors')
 const volleyball = require('volleyball')
 const app = express()
+const fs = require('fs')
 
 // static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
@@ -15,11 +16,16 @@ app.use(volleyball)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/api', require('./api'))
 
 
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 })
+
+
+
+
 
 // error handling middleware
 app.use((err, req, res, next) => {
