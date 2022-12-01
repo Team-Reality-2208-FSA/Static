@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFBI, selectFBI } from "../store/FBISlice";
+import Chart from "./Chart";
 
 function Stats() {
   const [inputState, setInputState] = useState("");
@@ -20,10 +21,9 @@ function Stats() {
     <>
       <div className="statsHeader">STATS</div>
       <div className="statsBody">
-        <img
-          className="graphImg"
-          src="https://cdn.pixabay.com/photo/2012/04/16/12/26/chart-35773__340.png"
-        ></img>
+        <div>
+          <Chart />
+        </div>
 
         <div className="statsForm">
           <form>
