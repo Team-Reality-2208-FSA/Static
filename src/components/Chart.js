@@ -28,38 +28,31 @@ function Chart() {
       },
       title: {
         display: true,
-        text: "Chart.js Bar Chart",
+        text: "Last 5 years",
       },
     },
   };
 
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
+  const labels = ["2017", "2018", "2019", "2020", "2021"];
 
   const data = {
     labels,
     datasets: [
       {
-        label: "Dataset 1",
-        data: [10, 20, 30, 40, 50],
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "Dataset 2",
-        data: [10, 20, 30, 40, 50],
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        label: "Category goes here",
+        data: [30, 20, 40, 13, 50, 35],
+        backgroundColor: "#333333",
       },
     ],
   };
 
-  return <Bar options={options} data={data} />;
+  return (
+    <>
+      <div className="barChart">
+        <Bar options={options} data={data} />
+      </div>
+    </>
+  );
 }
 
 export default Chart;

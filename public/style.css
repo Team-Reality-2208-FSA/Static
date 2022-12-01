@@ -141,7 +141,6 @@ ul {
   height: 70vh;
   width: 100%;
   padding: 10vmin;
-  border: solid black 10px;
 }
 .statsForm {
   padding: 3vmin;
@@ -173,4 +172,9 @@ button:hover {
 .stateInput {
   width: 50%;
   height: 5vmin;
+}
+.barChart {
+  padding: 5vmin;
+  width: 80vmin;
+  height: auto;
 }
