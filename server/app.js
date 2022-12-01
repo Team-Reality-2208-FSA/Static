@@ -15,6 +15,10 @@ app.use(volleyball)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+//Added from chart video
+app.get('/', (req, res) => {
+  res.send('Express');
+})
 
 
 app.use('*', (req, res) => {
