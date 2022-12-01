@@ -1,14 +1,25 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { statesData } from "../states.js";
+import { useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { statesData } from '../states.js'
+import {fetchCounties, selectGeoJson, selectGeoLoading} from '../store/CountySlice'
+
+
+
+
 
 function Map() {
   const dispatch = useDispatch();
   const [onselect, setOnselect] = useState({});
 
-  useEffect(() => {}, []);
+  
+  useEffect(()=>{
+    dispatch(fetchCounties('New York'))
+  },[])
+  const counties = useSelector(selectGeoJson)
+  const loading = useSelector(selectGeoLoading)
+  console.log(counties)
 
   /* function determining what should happen onmouseover, this function updates our state*/
   const getColor = (d) => {
@@ -72,6 +83,7 @@ function Map() {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     console.log(e);
   };
@@ -83,7 +95,10 @@ function Map() {
   };
 
   return (
+
+
     <div className="map-container">
+
       {!onselect.county && (
         <div className="crime-info-hover">
           <strong>Static Crime Data</strong>
@@ -91,18 +106,15 @@ function Map() {
         </div>
       )}
       {onselect.county && (
-        <ul className="crime-info">
-          <li>
-            <strong>{onselect.county}</strong>
-          </li>
-          <br />
-          <li>Total Population:{onselect.total}</li>
-          <li>Men:{onselect.male}</li>
-          <li>Women:{onselect.female}</li>
-          <li>Intersex:{onselect.intersex}</li>
-          <li>
-            Population density:{onselect.density} people <br /> per square km
-          </li>
+
+        <ul className="crime-info" >
+          <li><strong>{onselect.county}</strong></li><br />
+          <li>Crime Rate:{onselect.total}</li>
+          <li>Murders{onselect.male}</li>
+          <li>Assaults{onselect.female}</li>
+          <li>Thefts{onselect.intersex}</li>
+          <li>Population density:{onselect.density} people <br /> per square km</li>
+
         </ul>
       )}
       <MapContainer
@@ -120,13 +132,11 @@ function Map() {
           attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
           url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
-        {statesData && (
-          <GeoJSON
-            data={statesData}
-            style={style}
-            onEachFeature={onEachFeature}
-          />
-        )}
+
+        {!loading ? (
+          <GeoJSON data={counties} style={style} onEachFeature={onEachFeature}
+          />) : null }
+
       </MapContainer>
       <form className="stateInputForm">
         <label htmlFor="county"></label>

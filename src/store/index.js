@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 
-import CountySlice from "./CountySlice";
+import countiesSlice from "./CountySlice";
 import fbiSlice from "./FBISlice";
 import mapSlice from "./mapSlice";
 
@@ -14,8 +14,8 @@ const store = configureStore({
 
 
     FBI: fbiSlice.reducer,
-     Counties: CountySlice.reducer,
-     map: mapSlice.reducer
+    counties: countiesSlice.reducer,
+    map: mapSlice.reducer
   }
 
 });
