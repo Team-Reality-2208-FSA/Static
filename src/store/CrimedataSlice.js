@@ -1,0 +1,50 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const initialState = {};
+
+export const fetchStats = createAsyncThunk(
+  "fetchStats",
+  async ({ oris, offense, from, to }) => {
+    // console.log(offense, " offense++++");
+    // console.log(from, " From++++");
+    // console.log(to, " to++++");
+    
+
+  const arr = []
+
+    const functionGetStats = async (ori, offense, from, to) => {
+      const results = await axios.get(
+        `https://api.usa.gov/crime/fbi/sapi/api/summarized/agencies/${ori}/${offense}/${from}/${to}?API_KEY=uMb4ZhdgjKJqrGVqx7G3DhpOWbW2YFZ36iEgxRca`
+      );
+      console.log(results);
+      return results;
+    };
+
+ const arr2 = await Promise.all (oris.map( (ori) => {
+       arr.push(functionGetStats(ori, offense, from, to));
+    }));
+    console.log(arr);
+    return arr
+  }
+);
+
+export const crimeDataSlice = createSlice({
+  name: "crimeData",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchCrimeData.fulfilled, (state, action) => {
+      state.crimeData = action.payload;
+      console.log(action.payload)
+    });
+  
+  },
+});
+
+export const selectCrimeData = (state) => {
+  return state.crimeData;
+  
+};
+
+export default crimeDataSlice;
