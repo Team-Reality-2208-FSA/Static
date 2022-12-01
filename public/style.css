@@ -113,16 +113,15 @@ footer {
 
 /*STATS COMPONENT START*/
 .statsBody {
+  margin: 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 10vmin;
   height: 70vh;
   width: 100%;
-  padding: 10vmin;
 }
 .statsForm {
-  padding: 3vmin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,8 +155,7 @@ button:hover {
 
 /*BARCHART COMPONENT START*/
 .barChart {
-  padding: 5vmin;
-  width: 80vmin;
+  width: 60vmin;
   height: auto;
 }
 /*BARCHART COMPONENT END*/
