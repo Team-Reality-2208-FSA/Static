@@ -53,10 +53,12 @@ nav {
   border-radius: 5px;
   border: none;
 }
+
 .homePageLoginBtn:hover {
   cursor: pointer;
   background-color: lightgray;
 }
+
 footer {
   display: flex;
   background-color: #333333;
@@ -86,6 +88,7 @@ footer {
 .footer-icon {
   width: 3vmin;
 }
+
 .footer-icon:hover {
   cursor: pointer;
 }
@@ -104,18 +107,16 @@ footer {
   border: 2px solid red;
   display: flex;
   flex-direction: column;
-width: 25vw;
+  width: 25vw;
   margin: 10px;
   height: 20vh;
-
 }
-
 .crime-info{
   display: flex;
   flex-direction: column;
   width: 20vw;
-  
 }
+
 .zipCodeForm {
   margin-bottom: 2vh;
 }

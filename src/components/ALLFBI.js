@@ -9,8 +9,6 @@ import { fetchFBI, selectFBI } from "../store/FBISlice"
 
 
 const ALLFBI = () => {
-
-
     const [chosenState, setChosenState] = useState("")
     const dispatch = useDispatch();
     const FBIData = useSelector(selectFBI);

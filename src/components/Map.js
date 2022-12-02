@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
 import {fetchCounties, selectGeoJson, selectGeoLoading} from '../store/CountySlice'
-import MapLayer from "./MapLayer.js";
+import MapMarker from "./MapMarker.js";
 
 
 
@@ -14,15 +14,16 @@ function Map() {
   const dispatch = useDispatch();
   const [onselect, setOnselect] = useState({});
   const [center, setCenter] = useState([38, -96])
+  const [geoData, setGeoData] = useState(statesData)
   //const map = useMap()
   console.log("this is the center",center)
   const counties = useSelector(selectGeoJson)
   const loading = useSelector(selectGeoLoading)
   
   useEffect(()=>{
-    dispatch(fetchCounties('New York'))
+    dispatch(fetchCounties('01'))
   },[])
-  
+
   /* function determining what should happen onmouseover, this function updates our state*/
   const getColor = (d) => {
     // here define what crime rate ranges match which color
@@ -53,12 +54,23 @@ function Map() {
       fillOpacity: 0.7,
     };
   };
+  const countystyle = (feature) =>{
+    return {
+      fillColor: "blue",
+      weight:2,
+      opacity:1,
+      color: "white",
+      dashArray: "3",
+      fillOpacity: 0.7,
+    }
+  }
   function highlightFeature(e) {
     // properties of the selected state are named here
     const layer = e.target;
     const Density = e.target.feature.properties.density;
+    
     setOnselect({
-      county: "County goes here",
+      state: e.target.feature.properties.name,
       total: "Total goes here",
       crimeRate: "Crime rate goes here",
       population: "population goes here",
@@ -109,7 +121,7 @@ function Map() {
   return (
     <div className="map-container" >
       
-      {!onselect.county ? (
+      {!onselect.state ? (
         <div className="crime-info-hover">
           <strong>Static Crime Data</strong>
           <p>Hover on each State/County for more details</p>
@@ -117,11 +129,12 @@ function Map() {
       ) : (
         <div className="crime-info-hover">
         <ul className="crime-info" >
-          <li><strong>{onselect.county}</strong></li><br />
-          <li>Crime Rate:{onselect.total}</li>
-          <li>Murders{onselect.male}</li>
-          <li>Assaults{onselect.female}</li>
-          <li>Thefts{onselect.intersex}</li>
+          <li><strong>{onselect.state}</strong></li><br />
+          <li>Crime Rate:{onselect.crimeRate}</li>
+          <li>Total:{onselect.total}</li>
+          <li>Murders:</li>
+          <li>Assaults:</li>
+          <li>Thefts:</li>
           <li>Population density:{onselect.density} people <br /> per square km</li>
 
         </ul>
@@ -139,10 +152,12 @@ function Map() {
           attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
           url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
-        <MapLayer center={center}/>
+        <MapMarker center={center}/>
         {!loading ? (
-          <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}
+          <GeoJSON data={counties} style={countystyle}
           />) : null }
+        <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}/>
+        
 
       </MapContainer>
       <form className="stateInputForm">

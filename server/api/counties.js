@@ -4,8 +4,13 @@ const { applyMiddleware } = require('@reduxjs/toolkit')
 const fs = require('fs')
 const counties = require('../counties.json')
 
-router.get("/:state", async (req, res, next) => {
-    const response = counties
+router.get("/:stateId", async (req, res, next) => {
+    const { stateId } = req.params
+    const response = counties.features.filter((county)=>{
+        if(county.properties.STATE === stateId) {
+            return county
+        }
+    })
     res.send(response)
 })
 
