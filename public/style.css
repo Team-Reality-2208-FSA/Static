@@ -159,3 +159,42 @@ button:hover {
   height: auto;
 }
 /*BARCHART COMPONENT END*/
+
+/*TEAM COMPONENT START*/
+.teamBody {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+  font-size: 5vmin;
+  background-color: lightgray;
+  padding-top: 5vmin;
+}
+
+.profiles {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  margin-top: 5vmin;
+}
+.profileImg {
+  width: 20vmin;
+  border: solid black 3px;
+}
+.profileText {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 20vmin;
+  font-size: 1.6vmin;
+  font-family: monospace;
+}
+.profileImg-and-profileText {
+  border: solid black 1px;
+  padding: 1vmin;
+  height: 50vmin;
+}
+
+/*TEAM COMPONENT END*/
