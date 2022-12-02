@@ -118,11 +118,26 @@ ul {
 
 .map-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
   height: 80vh;
+}
+.crime-info-hover{
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+width: 25vw;
+  margin: 10px;
+  height: 20vh;
+
+}
+
+.crime-info{
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  
 }
 .zipCodeForm {
   margin-bottom: 2vh;

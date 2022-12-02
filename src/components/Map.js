@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
@@ -11,14 +11,15 @@ import {fetchCounties, selectGeoJson, selectGeoLoading} from '../store/CountySli
 function Map() {
   const dispatch = useDispatch()
   const [onselect, setOnselect] = useState({});
+  const [center, setCenter] = useState([38, -96])
+  //const map = useMap()
+  console.log("this is the center",center)
+  const counties = useSelector(selectGeoJson)
+  const loading = useSelector(selectGeoLoading)
   
   useEffect(()=>{
     dispatch(fetchCounties('New York'))
   },[])
-  const counties = useSelector(selectGeoJson)
-  const loading = useSelector(selectGeoLoading)
-  console.log(counties)
-  
 
   /* function determining what should happen onmouseover, this function updates our state*/
   const getColor = (d) => { // here define what crime rate ranges match which color
@@ -65,18 +66,27 @@ function Map() {
     e.target.setStyle(style(e.target.feature));
   }
 
+  const showCounties = (e) =>{
+    const layer = e.target
+    const state = e.target.feature.properties.name
+    const cords = e.latlng
+    const lat = Math.floor(cords.lat)
+    const lng = Math.floor(cords.lng)
+    console.log(lat,lng)
+    setCenter([lat,lng])
+  }
+
   const onEachFeature = (feature, layer) => {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
+      click: showCounties,
     });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
     console.log(e)
-    
   }
 
   const mapStyle = {
@@ -87,15 +97,15 @@ function Map() {
 
 
   return (
-    
     <div className="map-container" >
-      {!onselect.county && (
+      
+      {!onselect.county ? (
         <div className="crime-info-hover">
           <strong>Static Crime Data</strong>
           <p>Hover on each State/County for more details</p>
         </div>
-      )}
-      {onselect.county && (
+      ) : (
+        <div className="crime-info-hover">
         <ul className="crime-info" >
           <li><strong>{onselect.county}</strong></li><br />
           <li>Crime Rate:{onselect.total}</li>
@@ -104,24 +114,22 @@ function Map() {
           <li>Thefts{onselect.intersex}</li>
           <li>Population density:{onselect.density} people <br /> per square km</li>
         </ul>
+        </div>
       )}
+      
       <MapContainer
         className="mapView"
-        center={[38, -96]}
+        center={center}
         zoom={5}
         scrollWheelZoom={false}
         style={mapStyle}
       >
-        {/* <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        /> */}
         <TileLayer
           attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
           url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
         {!loading ? (
-          <GeoJSON data={counties} style={style} onEachFeature={onEachFeature}
+          <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}
           />) : null }
       </MapContainer>
       <form className="zipCodeForm">
