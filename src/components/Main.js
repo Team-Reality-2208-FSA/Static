@@ -39,6 +39,7 @@ const Main = () => {
         <Route path="/" element={<Map />} />
         <Route path="/FBI" element={<ALLFBI />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/team" element={<Team />} />
       </Routes>
       <Footer />
     </div>
