@@ -3,6 +3,7 @@
  * but feel free to change me to your heart's content!
  */
 
+/*MAIN COMPONENT START*/
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
@@ -38,13 +39,13 @@ nav {
   font-size: 2.25vmin;
 }
 .links {
-  /* text-decoration: none; */
   color: white;
 }
 
 .links:hover {
   color: lightgray;
 }
+
 .homePageLoginBtn {
   padding: 0.5vmin;
   width: 20vmin;
@@ -89,33 +90,9 @@ footer {
   cursor: pointer;
 }
 
-main {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+/*MAIN COMPONENT END*/
 
-.campusImgs {
-  width: 20vw;
-  height: 20vh;
-  border: 3px solid darkgray;
-}
-.allCampusesView {
-  display: flex;
-  margin-top: 0;
-  margin-left: 20px;
-}
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  border: 3px solid rgb(148, 148, 148);
-  width: 60vw;
-  list-style: none;
-  justify-content: space-evenly;
-  margin-top: 0;
-}
-
+/*MAP COMPONENT START*/
 .map-container {
   display: flex;
   justify-content: center;
@@ -147,19 +124,19 @@ width: 25vw;
   height: 75vmin;
   width: 75vmin;
 }
+/*MAP COMPONENT END*/
 
+/*STATS COMPONENT START*/
 .statsBody {
+  margin: 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 10vmin;
   height: 70vh;
   width: 100%;
-  padding: 10vmin;
-  border: solid black 10px;
 }
 .statsForm {
-  padding: 3vmin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,8 +166,11 @@ button:hover {
   width: 50%;
   height: 5vmin;
 }
-.graphImg {
+/*MAP COMPONENT END*/
+
+/*BARCHART COMPONENT START*/
+.barChart {
   width: 60vmin;
-  padding: 4vmin;
-  border: solid black 1px;
+  height: auto;
 }
+/*BARCHART COMPONENT END*/
