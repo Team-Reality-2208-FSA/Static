@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
 import {fetchCounties, selectGeoJson, selectGeoLoading} from '../store/CountySlice'
+import MapLayer from "./MapLayer.js";
 
 
 
@@ -128,6 +129,7 @@ function Map() {
           attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
           url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
+        <MapLayer center={center}/>
         {!loading ? (
           <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}
           />) : null }
