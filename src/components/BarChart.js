@@ -19,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-function Chart() {
+function BarChart() {
   const options = {
     responsive: true,
     plugins: {
@@ -55,4 +55,4 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default BarChart;

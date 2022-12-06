@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFBI, selectFBI } from "../store/FBISlice";
-import Chart from "./Chart";
+import BarChart from "./BarChart";
+import DoughnutChart from "./DoughnutChart";
 
 function Stats() {
   const [inputState, setInputState] = useState("");
@@ -21,49 +22,16 @@ function Stats() {
     <>
       <div className="statsHeader">STATS</div>
       <div className="statsBody">
-        <div>
-          <Chart />
-        </div>
-
         <div className="statsForm">
           <form>
             <label>
               <div className="inputLabel">Enter State Initials</div>
               <input
-                classname="stateInput"
+                className="stateInput"
                 onChange={setInputState}
                 type="text"
                 name="name"
               />
-            </label>
-            <label>
-              <div className="inputLabel">Select County</div>
-              <select
-                name="myselect"
-                className="selectCounty"
-                id="myselect"
-                onchange="this.form.submit()"
-              >
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="4">Four</option>
-              </select>
-            </label>
-
-            <label>
-              <div className="inputLabel">Year</div>
-              <select
-                name="myselect"
-                className="selectCounty"
-                id="myselect"
-                onchange="this.form.submit()"
-              >
-                <option value="1">2019</option>
-                <option value="2">2018</option>
-                <option value="3">2017</option>
-                <option value="4">2016</option>
-              </select>
             </label>
 
             <label>
@@ -72,7 +40,7 @@ function Stats() {
                 name="myselect"
                 className="selectCounty"
                 id="myselect"
-                onchange="this.form.submit()"
+                onChange="this.form.submit()"
               >
                 <option value="1">All</option>
                 <option value="2">Robbery</option>
@@ -86,6 +54,12 @@ function Stats() {
               <input type="submit" value="Generate" />
             </div>
           </form>
+        </div>
+        <div>
+          <BarChart />
+        </div>
+        <div>
+          <DoughnutChart />
         </div>
       </div>
     </>
