@@ -14,14 +14,14 @@ export const fetchStats = createAsyncThunk(
       const results = await axios.get(
         `https://api.usa.gov/crime/fbi/sapi/api/summarized/agencies/${ori}/${offense}/${from}/${to}?API_KEY=uMb4ZhdgjKJqrGVqx7G3DhpOWbW2YFZ36iEgxRca`
       );
-      console.log(results);
+     
       return results;
     };
 
- const arr2 = await Promise.all (oris.map( (ori) => {
+  await Promise.all (oris.map( (ori) => {
        arr.push(functionGetStats(ori, offense, from, to));
     }));
-    console.log(arr);
+   console.log(arr)
     return arr
   }
 );
