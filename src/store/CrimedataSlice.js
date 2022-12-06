@@ -6,9 +6,6 @@ const initialState = {};
 export const fetchStats = createAsyncThunk(
   "fetchStats",
   async ({ oris, offense, from, to }) => {
-    // console.log(offense, " offense++++");
-    // console.log(from, " From++++");
-    // console.log(to, " to++++");
     
 
   const arr = []
@@ -34,9 +31,9 @@ export const crimeDataSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCrimeData.fulfilled, (state, action) => {
+    builder.addCase(fetchStats.fulfilled, (state, action) => {
       state.crimeData = action.payload;
-      console.log(action.payload)
+     
     });
   
   },
