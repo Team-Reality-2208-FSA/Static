@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-function MapLayer({center}) {
+function MapMarker({center}) {
     const map = useMap();
     return (
         <Marker
@@ -24,8 +24,8 @@ function MapLayer({center}) {
           <Popup>
             <span>Heyy</span>
           </Popup>
-        </Marker>
+      </Marker>
     )
 }
 
-export default MapLayer;
+export default MapMarker;

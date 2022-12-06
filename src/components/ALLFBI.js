@@ -6,8 +6,6 @@ import { fetchStats } from "../store/CrimedataSlice";
 
  
 const ALLFBI = () => {
-
-
     const [chosenState, setChosenState] = useState("")
     const [option, setOption ] = useState("")
     
