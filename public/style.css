@@ -10,7 +10,6 @@
 }
 
 body {
-  background: linear-gradient(#ffffff, #c0c0c0);
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -103,7 +102,7 @@ footer {
   margin: 20px;
   height: 80vh;
 }
-.crime-info-hover{
+.crime-info-hover {
   border: 2px solid red;
   display: flex;
   flex-direction: column;
@@ -111,7 +110,7 @@ footer {
   margin: 10px;
   height: 20vh;
 }
-.crime-info{
+.crime-info {
   display: flex;
   flex-direction: column;
   width: 20vw;
@@ -131,10 +130,10 @@ footer {
 .statsBody {
   margin: 0;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
   margin-top: 10vmin;
-  height: 70vh;
+  height: 170vh;
   width: 100%;
 }
 .statsForm {
@@ -143,7 +142,7 @@ footer {
   align-items: center;
   text-align: center;
   width: 30vmin;
-  height: 0vh;
+  height: 50vh;
 }
 
 .selectCounty {
