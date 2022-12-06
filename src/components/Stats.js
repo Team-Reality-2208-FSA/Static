@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFBI, selectFBI } from "../store/FBISlice";
 import BarChart from "./BarChart";
 import DoughnutChart from "./DoughnutChart";
+import LineChart from "./LineChart";
 
 function Stats() {
   const [inputState, setInputState] = useState("");
@@ -60,6 +61,9 @@ function Stats() {
         </div>
         <div>
           <DoughnutChart />
+        </div>
+        <div>
+          <LineChart />
         </div>
       </div>
     </>
