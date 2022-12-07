@@ -16,7 +16,6 @@ export const fetchAllCounties = createAsyncThunk('fetchAllCounties', async () =>
 })
 
 
-
 // export const fetchStats = createAsyncThunk('fetchStats', async (oriArray, to, from, offense)=>{
 //     const functionGetStats = async (ori, to,from,offense) =>{
 //         return await axios.get("link(ori.number)(to)(from)(offense)")
@@ -32,25 +31,36 @@ export const countiesSlice = createSlice({
     reducers: {
         findCounties: {
             reducer: (state, action) => {
-                const id = action.payload.id
+                const id = action.payload.id + 4
                 const obj = {
                     type: state.allCounties.type,
                     features: [...state.allCounties.features]
                 }
+                console.log(id)
                 if (id !== null) {
+                    let featId
                     obj.features = obj.features.filter((feature) => {
-                        return feature.properties.STATE === id
+                        if(feature.properties.STATE[0]==="0"){
+                            featId = feature.properties.STATE[1]
+                        } else {
+                           featId = feature.properties.STATE
+                        }
+                        console.log(featId, "=====", id)
+                        return feature.properties.STATE === JSON.stringify(id)
                     })
                     state.counties = obj
                     state.toggle = true
+                    console.log("data",obj)
                 } else {
                     obj.features = []
                     state.counties = obj
                     state.toggle = false
+                    console.log("data",obj)
                 }
                 
             },
             prepare: (id) => {
+                
                 return { payload: { id } }
             }
         },

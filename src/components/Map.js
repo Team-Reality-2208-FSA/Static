@@ -9,7 +9,6 @@ import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeData
 function Map() {
   const dispatch = useDispatch();
   const [onselect, setOnselect] = useState({});
-  // const [geoJson, setGeoJson] = useState({crimeData:crimeData,statesData:{...statesData}})
   const [stateLayer, setStateLayer] = useState(true)
   const loading = useSelector(selectGeoLoading)
   const counties = useSelector(selectCounties)
@@ -31,24 +30,18 @@ function Map() {
     d > 40 ? "#FD8D3C": 
     d > 30 ? "#FEB24C":
     d > 20 ? "#FED976": "#FFEDA0");
-    
   };
 
   const style = (feature) => {
-
-
     const state = crimeData[feature.id - 1]
     let CR = 0
     let name = ''
-    
     if (state) {
       let population = state.results[0].population
       let totalCrimes = state.results[0].property_crime + state.results[0].violent_crime
       CR = Math.floor((population / totalCrimes))
       name = state.results[0].state_abbr
     }
-
-    
     return {
       fillColor: getColor(CR,name),
       weight: 2,
@@ -79,11 +72,12 @@ function Map() {
     const density = e.target.feature.properties.density;
     const name = e.target.feature.properties.name
     const id = e.target.feature.id
+    console.log(id)
     dispatch(findCounties(id))
   }
 
   const resetHighlight = (e) => {
-    setOnselect({})
+    // setOnselect({})
     e.target.setStyle(style(e.target.feature));
   };
 
