@@ -43,6 +43,7 @@ export const stateDataSlice = createSlice({
                     density:obj.density,
                     crimeRate: crimeRate
                 }
+               
                 console.log(data, obj)
                 state.stateCrimes = data
             },
