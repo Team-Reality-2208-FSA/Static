@@ -103,7 +103,7 @@ footer {
   height: 80vh;
 }
 .crime-info-hover {
-  border: 2px solid red;
+  border: 2px solid rgb(242, 230, 191);
   display: flex;
   flex-direction: column;
   width: 25vw;

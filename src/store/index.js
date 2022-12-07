@@ -12,8 +12,6 @@ import stateDataSlice from "./stateDataslice";
 // main redux store
 const store = configureStore({
   reducer: {
-
-
     FBI: fbiSlice.reducer,
     counties: countiesSlice.reducer,
     map: mapSlice.reducer, 
