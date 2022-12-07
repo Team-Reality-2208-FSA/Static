@@ -3,48 +3,54 @@ import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
-import {fetchAllCounties, selectGeoLoading, findCounties, selectCounties} from '../store/CountySlice'
-import MapMarker from "./MapMarker.js";
-
-
-
-
+import { fetchAllCounties, selectGeoLoading, findCounties, selectCounties, selectToggle } from '../store/CountySlice'
+import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeDataLoading } from "../store/stateDataslice.js";
 
 function Map() {
   const dispatch = useDispatch();
   const [onselect, setOnselect] = useState({});
-  const [geoJson, setGeoJson] = useState({...statesData})
+  // const [geoJson, setGeoJson] = useState({crimeData:crimeData,statesData:{...statesData}})
   const [stateLayer, setStateLayer] = useState(true)
   const loading = useSelector(selectGeoLoading)
   const counties = useSelector(selectCounties)
-  
- 
-  useEffect(()=>{
-    dispatch(fetchAllCounties())
-  },[])
-  
+  const crimeData = useSelector(selectStateData)
+  const crimes = useSelector(selectCrimes)
+  const crimeLoading = useSelector(crimeDataLoading)
 
-  const getColor = (d) => {
-    return d > 1000
-      ? "#800026"
-      : d > 500
-      ? "#BD0026"
-      : d > 200
-      ? "#E31A1C"
-      : d > 100
-      ? "#FC4E2A"
-      : d > 50
-      ? "#FD8D3C"
-      : d > 20
-      ? "#FEB24C"
-      : d > 10
-      ? "#FED976"
-      : "#FFEDA0";
+  useEffect(() => {
+    dispatch(fetchAllCounties())
+    dispatch(fetchStateData())
+  }, [])
+
+  const getColor = (d, name) => {
+    return (
+    d > 80 ? "#800026": 
+    d > 70 ? "#BD0026": 
+    d > 60 ? "#E31A1C": 
+    d > 50 ? "#FC4E2A": 
+    d > 40 ? "#FD8D3C": 
+    d > 30 ? "#FEB24C":
+    d > 20 ? "#FED976": "#FFEDA0");
+    
   };
 
   const style = (feature) => {
+
+
+    const state = crimeData[feature.id - 1]
+    let CR = 0
+    let name = ''
+    
+    if (state) {
+      let population = state.results[0].population
+      let totalCrimes = state.results[0].property_crime + state.results[0].violent_crime
+      CR = Math.floor((population / totalCrimes))
+      name = state.results[0].state_abbr
+    }
+
+    
     return {
-      fillColor: getColor(feature.properties.density),
+      fillColor: getColor(CR,name),
       weight: 2,
       opacity: 1,
       color: "white",
@@ -53,20 +59,20 @@ function Map() {
     };
   };
 
-  const countystyle = (feature) =>{
+  const countystyle = (feature) => {
     return {
       fillColor: "blue",
-      weight:2,
-      opacity:1,
+      weight: 2,
+      opacity: 1,
       color: "white",
       dashArray: "3",
       fillOpacity: 0.7,
     }
   }
-  
- 
+
+
   function showCounties(e) {
-    setStateLayer((st)=> !st)
+    setStateLayer((st) => !st)
     console.log(stateLayer)
     dispatch(findCounties(null))
     const layer = e.target;
@@ -81,19 +87,21 @@ function Map() {
     e.target.setStyle(style(e.target.feature));
   };
 
-  const showData = (e) =>{
-    const layer = e.target
+  const showData = (e) => {
     const name = e.target.feature.properties.name
     const density = e.target.feature.properties.density
-    const id = e.target.feature.id
-    setOnselect({
+    let id = e.target.feature.id
+
+    const obj = {
       state: name,
       total: "Total goes here",
       crimeRate: "Crime rate goes here",
       population: "population goes here",
       density: density,
       id: id
-    });
+    };
+    setOnselect({ state: "yeah" })
+    dispatch(findCrimeData(obj))
   }
 
   const onEachFeature = (feature, layer) => {
@@ -112,7 +120,7 @@ function Map() {
 
   return (
     <div className="map-container" >
-      
+
       {!onselect.state ? (
         <div className="crime-info-hover">
           <strong>Static Crime Data</strong>
@@ -120,22 +128,22 @@ function Map() {
         </div>
       ) : (
         <div className="crime-info-hover">
-        <ul className="crime-info" >
-          <li><strong>{onselect.state}</strong></li><br />
-          <li>Crime Rate:{onselect.crimeRate}</li>
-          <li>Total:{onselect.total}</li>
-          <li>Murders:</li>
-          <li>Assaults:</li>
-          <li>Thefts:</li>
-          <li>Population density:{onselect.density} people <br /> per square km</li>
-
-        </ul>
+          <ul className="crime-info" >
+            <li><strong>{crimes.name}</strong></li><br />
+            <li>Crime Rate:{Math.floor(crimes.crimeRate * 100) / 100}</li>
+            <li>Total:{crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime}</li>
+            <li>Murders:{crimes.data.results[0].homicide}</li>
+            <li>Assaults:{crimes.data.results[0].aggravated_assault}</li>
+            <li>burglary:{crimes.data.results[0].burglary}</li>
+            <li>Population:{crimes.data.results[0].population}</li>
+            <li>Pop-density:{crimes.density} people <br /> per square km</li>
+          </ul>
         </div>
       )}
-      
+
       <MapContainer
         className="mapView"
-        center={[39,-96]}
+        center={[39, -96]}
         zoom={5}
         scrollWheelZoom={false}
         style={mapStyle}
@@ -146,12 +154,12 @@ function Map() {
         />
         {!loading && !stateLayer ? (
           <GeoJSON data={counties} style={countystyle}
-          />) : null }
-          <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}/>
-        
-
+          />) : null}
+        {crimeData && !crimeLoading ?
+          <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature} /> : null
+        }
       </MapContainer>
-      <form className="stateInputForm">
+      {/* <form className="stateInputForm">
         <label htmlFor="county"></label>
         <input type="text" name="county" placeholder="Enter county name" />
         <button
@@ -162,7 +170,7 @@ function Map() {
         >
           Find
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }
