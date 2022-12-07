@@ -171,9 +171,11 @@ button:hover {
 
 /*BARCHART COMPONENT START*/
 .barChart {
-  width: 70vmin;
+  width: 70vw;
   height: auto;
+  padding: 6vmin;
 }
+
 /*BARCHART COMPONENT END*/
 
 /*TEAM COMPONENT START*/
