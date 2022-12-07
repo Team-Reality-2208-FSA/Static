@@ -5,6 +5,8 @@ import countiesSlice from "./CountySlice";
 import fbiSlice from "./FBISlice";
 import mapSlice from "./mapSlice";
 import graphSlice from "./GraphSlice";
+import stateDataSlice from "./stateDataslice";
+
 
 
 
@@ -16,8 +18,11 @@ const store = configureStore({
 
     FBI: fbiSlice.reducer,
     counties: countiesSlice.reducer,
+
     map: mapSlice.reducer,
     Graphs: graphSlice.reducer,
+ stateData: stateDataSlice.reducer
+
   }
 
 });

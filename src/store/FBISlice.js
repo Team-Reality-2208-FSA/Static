@@ -31,8 +31,7 @@ export const fbiSlice = createSlice({
                
 
              let OriData = FBI.results.map((result) => [result.ori, result.county_name])
-            // const OriArr = []
-            //  let OriNumber = OriData.filter((SingleCounties, index) =>OriData[index][1].includes(SingleCounties[1]) ?  OriArr.push(OriData[index][0])  : null   )
+            
     
            
              state.Counties = SingleCounties

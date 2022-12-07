@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
-import {fetchCounties, selectGeoJson, selectGeoLoading} from '../store/CountySlice'
+import {fetchAllCounties, selectGeoLoading, findCounties, selectCounties} from '../store/CountySlice'
 import MapMarker from "./MapMarker.js";
 
 
@@ -13,20 +13,18 @@ import MapMarker from "./MapMarker.js";
 function Map() {
   const dispatch = useDispatch();
   const [onselect, setOnselect] = useState({});
-  const [center, setCenter] = useState([38, -96])
-  const [geoData, setGeoData] = useState(statesData)
-  //const map = useMap()
-  console.log("this is the center",center)
-  const counties = useSelector(selectGeoJson)
+  const [geoJson, setGeoJson] = useState({...statesData})
+  const [stateLayer, setStateLayer] = useState(true)
   const loading = useSelector(selectGeoLoading)
+  const counties = useSelector(selectCounties)
   
+ 
   useEffect(()=>{
-    dispatch(fetchCounties('01'))
+    dispatch(fetchAllCounties())
   },[])
+  
 
-  /* function determining what should happen onmouseover, this function updates our state*/
   const getColor = (d) => {
-    // here define what crime rate ranges match which color
     return d > 1000
       ? "#800026"
       : d > 500
@@ -46,7 +44,7 @@ function Map() {
 
   const style = (feature) => {
     return {
-      fillColor: getColor(feature.properties.density), // how to set the color based on a variable
+      fillColor: getColor(feature.properties.density),
       weight: 2,
       opacity: 1,
       color: "white",
@@ -54,6 +52,7 @@ function Map() {
       fillOpacity: 0.7,
     };
   };
+
   const countystyle = (feature) =>{
     return {
       fillColor: "blue",
@@ -64,53 +63,46 @@ function Map() {
       fillOpacity: 0.7,
     }
   }
-  function highlightFeature(e) {
-    // properties of the selected state are named here
+  
+ 
+  function showCounties(e) {
+    setStateLayer((st)=> !st)
+    console.log(stateLayer)
+    dispatch(findCounties(null))
     const layer = e.target;
-    const Density = e.target.feature.properties.density;
-    
-    setOnselect({
-      state: e.target.feature.properties.name,
-      total: "Total goes here",
-      crimeRate: "Crime rate goes here",
-      population: "population goes here",
-      density: Density,
-    });
-
-    layer.setStyle({
-      weight: 5,
-      color: "blue",
-      fillOpacity: 9,
-    });
+    const density = e.target.feature.properties.density;
+    const name = e.target.feature.properties.name
+    const id = e.target.feature.id
+    dispatch(findCounties(id))
   }
 
   const resetHighlight = (e) => {
-    setOnselect({});
+    setOnselect({})
     e.target.setStyle(style(e.target.feature));
   };
 
-  const showCounties = (e) =>{
+  const showData = (e) =>{
     const layer = e.target
-    const state = e.target.feature.properties.name
-    const cords = e.latlng
-    const lat = Math.floor(cords.lat)
-    const lng = Math.floor(cords.lng)
-    console.log(lat,lng)
-    setCenter([lat,lng])
+    const name = e.target.feature.properties.name
+    const density = e.target.feature.properties.density
+    const id = e.target.feature.id
+    setOnselect({
+      state: name,
+      total: "Total goes here",
+      crimeRate: "Crime rate goes here",
+      population: "population goes here",
+      density: density,
+      id: id
+    });
   }
 
   const onEachFeature = (feature, layer) => {
     layer.on({
-      mouseover: highlightFeature,
+      mouseover: showData,
       mouseout: resetHighlight,
       click: showCounties,
     });
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(e)
-  }
 
   const mapStyle = {
     height: "80vh",
@@ -143,7 +135,7 @@ function Map() {
       
       <MapContainer
         className="mapView"
-        center={center}
+        center={[39,-96]}
         zoom={5}
         scrollWheelZoom={false}
         style={mapStyle}
@@ -152,11 +144,10 @@ function Map() {
           attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
           url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
-        <MapMarker center={center}/>
-        {!loading ? (
+        {!loading && !stateLayer ? (
           <GeoJSON data={counties} style={countystyle}
           />) : null }
-        <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}/>
+          <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature}/>
         
 
       </MapContainer>
