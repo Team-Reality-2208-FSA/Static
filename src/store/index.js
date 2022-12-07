@@ -6,6 +6,7 @@ import fbiSlice from "./FBISlice";
 import mapSlice from "./mapSlice";
 import graphSlice from "./GraphSlice";
 import stateDataSlice from "./stateDataslice";
+import newsFeedSlice from "./newsfeedSlice";
 
 
 
@@ -19,7 +20,8 @@ const store = configureStore({
 
     map: mapSlice.reducer,
     Graphs: graphSlice.reducer,
- stateData: stateDataSlice.reducer
+    stateData: stateDataSlice.reducer, 
+    newsfeed: newsFeedSlice.reducer
 
   }
 

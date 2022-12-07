@@ -5,6 +5,8 @@ import Map from "./Map";
 import { Link } from "react-router-dom";
 import Stats from "./Stats";
 import Team from "./Team";
+import Newsfeed from "./newsfeed";
+
 /* 
     This is you entry point for your routes
 */
@@ -24,7 +26,7 @@ const Main = () => {
           <Link className="links" to="/topTen">
             <div>Top 10 Most Wanted</div>
           </Link>
-          <Link className="links" to="/topTen">
+          <Link className="links" to="/newsfeed">
             <div>News Feed</div>
           </Link>
         </div>
@@ -40,6 +42,7 @@ const Main = () => {
         <Route path="/FBI" element={<ALLFBI />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/newsfeed" element={<Newsfeed />} />
       </Routes>
       <footer>
         <div className="footer-column-name">
