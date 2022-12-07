@@ -48,5 +48,5 @@ const ALLFBI = () => {
     )
                     
     }
-export default ALLFBI
+export default ALLFBI;
 
