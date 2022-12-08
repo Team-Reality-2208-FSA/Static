@@ -9,6 +9,14 @@
   font-family: arial, sans-serif;
 }
 
+.navbar-brand {
+  border: 5px solid black;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#panel {
+  border: 3px red;
+}
 body {
   height: 100vh;
   padding: 0;
@@ -36,26 +44,6 @@ nav {
   flex-direction: row;
   width: 60vmin;
   font-size: 2.25vmin;
-}
-.links {
-  color: white;
-}
-
-.links:hover {
-  color: lightgray;
-}
-
-.homePageLoginBtn {
-  padding: 0.5vmin;
-  width: 20vmin;
-  font-size: 2.4vmin;
-  border-radius: 5px;
-  border: none;
-}
-
-.homePageLoginBtn:hover {
-  cursor: pointer;
-  background-color: lightgray;
 }
 
 footer {
@@ -95,20 +83,18 @@ footer {
 /*MAIN COMPONENT END*/
 
 /*MAP COMPONENT START*/
-.map-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  height: 80vh;
+.map {
+  height: 90vh;
+  margin-top: 50px;
 }
+
 .crime-info-hover {
   border: 2px solid rgb(242, 230, 191);
   display: flex;
   flex-direction: column;
-  width: 25vw;
+  width: 18vw;
   margin: 10px;
-  height: 20vh;
+  max-height: 40vh;
 }
 .crime-info {
   display: flex;
@@ -120,9 +106,10 @@ footer {
   margin-bottom: 2vh;
 }
 .mapView {
-  margin-bottom: 10vmin;
+  margin-bottom: 0vmin;
+  border: 10px solid black;
   height: 75vmin;
-  width: 75vmin;
+  width: 800px;
 }
 /*MAP COMPONENT END*/
 
@@ -135,7 +122,7 @@ footer {
   align-items: center;
   justify-content: center;
   margin-top: 10vmin;
-  height: 30vh;
+  height: 200vh;
   width: 100%;
 }
 .statsForm {
@@ -180,6 +167,15 @@ button:hover {
 }
 
 /*BARCHART COMPONENT END*/
+
+/*DOUGHNUT CHART START*/
+.doughnutChart{
+  width: 80vmin;
+  height: auto;
+  padding: 6vmin;
+}
+/*DOUGHNUT CHART START*/
+
 
 /*TEAM COMPONENT START*/
 
@@ -249,5 +245,4 @@ button:hover {
   border-bottom: 3px solid black;
   font-family: monospace;
 }
-
 /*NEWSFEED COMPONENT END*/

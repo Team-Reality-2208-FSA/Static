@@ -35,7 +35,6 @@ export const stateDataSlice = createSlice({
             reducer: (state, action) => {
                 const obj = action.payload.obj
                 const id = obj.id
-                console.log(obj)
                 const crimeRate = state.stateData[id-1].results[0].population/(state.stateData[id-1].results[0].violent_crime + state.stateData[id-1].results[0].property_crime)
                 const data = {
                     data:state.stateData[id-1],
@@ -43,8 +42,6 @@ export const stateDataSlice = createSlice({
                     density:obj.density,
                     crimeRate: crimeRate
                 }
-               
-                console.log(data, obj)
                 state.stateCrimes = data
             },
             prepare: (obj) => {
