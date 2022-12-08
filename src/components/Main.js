@@ -5,7 +5,11 @@ import Map from "./Map";
 import { Link } from "react-router-dom";
 import Stats from "./Stats";
 import Team from "./Team";
+
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+
 import Newsfeed from "./newsfeed";
+
 
 /* 
     This is you entry point for your routes
@@ -13,33 +17,28 @@ import Newsfeed from "./newsfeed";
 const Main = () => {
   return (
     <div>
-      <nav>
-        <div className="nav-leftSide">
-          <Link className="links" to="/">
-            <div>STATIC</div>
-          </Link>
-        </div>
-        <div className="nav-middle-links">
-          <Link className="links" to="/stats">
-            <div>Stats</div>
-          </Link>
-          <Link className="links" to="/topTen">
-            <div>Top 10 Most Wanted</div>
-          </Link>
-          <Link className="links" to="/newsfeed">
-            <div>News Feed</div>
-          </Link>
-        </div>
-        <Link className="links" to="topTen">
-          <div>
-            <button className="homePageLoginBtn">Login/Sign Up</button>
-          </div>
-        </Link>
-      </nav>
-      <main>{/* <h1>Welcome to Static!</h1> */}</main>
+
+      <Navbar bg="dark" expand="lg" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">S T A T I C</Navbar.Brand>
+          <Nav className="nav-middle-links">
+            <Nav.Link href="stats">Stats</Nav.Link>
+            <Nav.Link href="stats">Top 10</Nav.Link>
+            <Nav.Link href="newsfeed">News Feed</Nav.Link>
+          </Nav>
+          <NavDropdown title="Login / Sign Up">
+            <NavDropdown.Item>Login</NavDropdown.Item>
+            <NavDropdown.Item>SignUp</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item >Log Out</NavDropdown.Item>
+          </NavDropdown>
+        </Container>
+      </Navbar>
+
       <Routes>
         <Route path="/" element={<Map />} />
         <Route path="/FBI" element={<ALLFBI />} />
+        <Route path="/newsfeed" element={<Stats />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/team" element={<Team />} />
         <Route path="/newsfeed" element={<Newsfeed />} />
