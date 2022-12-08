@@ -221,37 +221,33 @@ button:hover {
 
 /*TEAM COMPONENT END*/
 
-
-
-
 /*NEWSFEED COMPONENT START*/
 
-.newsFeedBody{
-  margin: 0;
+.newsFeedBody {
   display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: lightgray;
+  grid-template-columns: auto auto auto auto;
+  background-color: #2F4F4F;
   padding-top: 5vmin;
+  justify-content: space-evenly;
 }
 
-.newsFeedArticle {
-  
-  border: 2px solid black;
-  margin: 5px
-}
+.card {
+  margin-bottom: 100px;
+  margin-left: 20px;
+  }
 
-.articleTitle {
+.card-body, .card-link, .card-text {
+  text-decoration: none;
   font-family: monospace;
-  text-decoration: underline;
-  font-size: 10px;
-}
+  height: auto;
+  color: white;
+  background-color: #A9A9A9;
+  }
 
-.articleImage {
- margin-left: 125px;
- margin-right: 125px;
- width: 20vw;
- height: 10vh;
 
+.card-title.h5 {
+  border-bottom: 3px solid black;
+  font-family: monospace;
 }
 
 /*NEWSFEED COMPONENT END*/
