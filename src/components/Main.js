@@ -5,13 +5,19 @@ import Map from "./Map";
 import { Link } from "react-router-dom";
 import Stats from "./Stats";
 import Team from "./Team";
+
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+
+import Newsfeed from "./newsfeed";
+
+
 /* 
     This is you entry point for your routes
 */
 const Main = () => {
   return (
     <div>
+
       <Navbar bg="dark" expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="/">S T A T I C</Navbar.Brand>
@@ -28,12 +34,14 @@ const Main = () => {
           </NavDropdown>
         </Container>
       </Navbar>
+
       <Routes>
         <Route path="/" element={<Map />} />
         <Route path="/FBI" element={<ALLFBI />} />
         <Route path="/newsfeed" element={<Stats />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/newsfeed" element={<Newsfeed />} />
       </Routes>
       <footer>
         <div className="footer-column-name">
