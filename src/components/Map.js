@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
 import { fetchAllCounties, selectGeoLoading, findCounties, selectCounties, selectToggle } from '../store/CountySlice'
 import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeDataLoading } from "../store/stateDataslice.js";
+import { Card } from "react-bootstrap"
 
 function Map() {
   const dispatch = useDispatch();
@@ -64,20 +65,20 @@ function Map() {
   }
 
 
-  function showCounties(e) {
-    setStateLayer((st) => !st)
-    console.log(stateLayer)
-    dispatch(findCounties(null))
-    const layer = e.target;
-    const density = e.target.feature.properties.density;
-    const name = e.target.feature.properties.name
-    const id = e.target.feature.id
-    console.log(id)
-    dispatch(findCounties(id))
-  }
+  // function showCounties(e) {
+  //   setStateLayer((st) => !st)
+  //   console.log(stateLayer)
+  //   dispatch(findCounties(null))
+  //   const layer = e.target;
+  //   const density = e.target.feature.properties.density;
+  //   const name = e.target.feature.properties.name
+  //   const id = e.target.feature.id
+  //   console.log(id)
+  //   dispatch(findCounties(id))
+  // }
 
   const resetHighlight = (e) => {
-    // setOnselect({})
+    setOnselect({})
     e.target.setStyle(style(e.target.feature));
   };
 
@@ -102,7 +103,7 @@ function Map() {
     layer.on({
       mouseover: showData,
       mouseout: resetHighlight,
-      click: showCounties,
+      // click: showCounties,
     });
   };
 
@@ -114,14 +115,13 @@ function Map() {
 
   return (
     <div className="map-container" >
-
       {!onselect.state ? (
-        <div className="crime-info-hover">
+        <Card className="crime-info-hover">
           <strong>Static Crime Data</strong>
           <p>Hover on each State/County for more details</p>
-        </div>
+        </Card>
       ) : (
-        <div className="crime-info-hover">
+        <Card className="crime-info-hover">
           <ul className="crime-info" >
             <li><strong>{crimes.name}</strong></li><br />
             <li>Crime Rate:{Math.floor(crimes.crimeRate * 100) / 100}</li>
@@ -132,7 +132,7 @@ function Map() {
             <li>Population:{crimes.data.results[0].population}</li>
             <li>Pop-density:{crimes.density} people <br /> per square km</li>
           </ul>
-        </div>
+        </Card>
       )}
 
       <MapContainer
