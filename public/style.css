@@ -135,7 +135,7 @@ footer {
   align-items: center;
   justify-content: center;
   margin-top: 10vmin;
-  height: 30vh;
+  height: 200vh;
   width: 100%;
 }
 .statsForm {
@@ -180,6 +180,15 @@ button:hover {
 }
 
 /*BARCHART COMPONENT END*/
+
+/*DOUGHNUT CHART START*/
+.doughnutChart{
+  width: 80vmin;
+  height: auto;
+  padding: 6vmin;
+}
+/*DOUGHNUT CHART START*/
+
 
 /*TEAM COMPONENT START*/
 
@@ -235,7 +244,6 @@ button:hover {
 }
 
 .newsFeedArticle {
-  
   border: 2px solid black;
   margin: 5px
 }
@@ -253,5 +261,4 @@ button:hover {
  height: 10vh;
 
 }
-
 /*NEWSFEED COMPONENT END*/
