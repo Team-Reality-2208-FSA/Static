@@ -117,6 +117,7 @@ function BarChart() {
       </div>
 
       <div className="gridBox">
+        <div className="gridBoxHeader">Total crimes per year</div>
         <select onChange={handleChange}>
           <option value="Select an option">Select a category</option>
           <option value="aggravated_assault">Aggravated Assault</option>
