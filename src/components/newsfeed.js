@@ -1,11 +1,12 @@
-import { findNonSerializableValue } from "@reduxjs/toolkit";
+
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsFeed, selectNewsFeed } from "../store/newsfeedSlice";
-import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
-const Newsfeed = () => {
+
+const newsfeed = () => {
   const dispatch = useDispatch();
 
   const NewsFeed = useSelector(selectNewsFeed);
@@ -19,11 +20,19 @@ const Newsfeed = () => {
     <div className="newsFeedBody">
       {NewsFeed.newsFeed
         ? NewsFeed.newsFeed.articles.map((article) => (
-            <div className="newsFeedArticle">
-                <img className="articleImage" src={article.urlToImage} />
-              <h1 className="articleTitle">{article.title}</h1>
-              <a href={article.url}>Link to article</a>
-            </div>
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={article.urlToImage} />
+              <Card.Body>
+                <Card.Title>
+                  {
+                    <a className="card-link" href={article.url}>
+                      {article.title}
+                    </a>
+                  }
+                </Card.Title>
+                <Card.Text>{article.description}</Card.Text>
+              </Card.Body>
+            </Card>
           ))
         : null}
     </div>

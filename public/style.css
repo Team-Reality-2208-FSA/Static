@@ -216,8 +216,13 @@ button:hover {
 .newsFeedBody{
   margin: 0;
   display: grid;
+<<<<<<< Updated upstream
   grid-template-columns: auto auto auto;
   background-color: lightgray;
+=======
+  grid-template-columns: auto auto auto auto;
+  background-color: #2F4F4F;
+>>>>>>> Stashed changes
   padding-top: 5vmin;
 }
 
@@ -227,7 +232,26 @@ button:hover {
   margin: 5px
 }
 
+<<<<<<< Updated upstream
 .articleTitle {
+=======
+.card {
+  margin-bottom: 100px;
+  margin-left: 20px;
+  }
+
+.card-body, .card-link, .card-text {
+  text-decoration: none;
+  font-family: monospace;
+  height: auto;
+  color: white;
+  background-color: #A9A9A9;
+  }
+
+
+.card-title.h5 {
+  border-bottom: 3px solid black;
+>>>>>>> Stashed changes
   font-family: monospace;
   text-decoration: underline;
   font-size: 10px;
