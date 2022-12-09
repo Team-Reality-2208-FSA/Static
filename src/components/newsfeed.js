@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +20,7 @@ const newsfeed = () => {
     <div className="newsFeedBody">
       {NewsFeed.newsFeed
         ? NewsFeed.newsFeed.articles.map((article) => (
+
             <Card border="warning"  style={{ width: "18rem" }}>
               <Card.Img variant="top" src={article.urlToImage} />
               <Card.Body>
@@ -36,6 +38,5 @@ const newsfeed = () => {
   );
 };
 
-export default newsfeed;
-
+export default Newsfeed;
 

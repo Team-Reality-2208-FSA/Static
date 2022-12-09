@@ -1,5 +1,5 @@
 import React from "react";
-import { ALLFBI } from "./";
+
 import { Routes, Route } from "react-router-dom";
 import Map from "./Map";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import Homepage from "./Homepage";
 
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
-import Newsfeed from "./newsfeed";
+import Newsfeed from "./newsfeed.js";
 
 
 /* 

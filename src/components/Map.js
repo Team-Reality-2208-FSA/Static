@@ -36,6 +36,7 @@ function Map() {
   const crimes = useSelector(selectCrimes)
   const crimeLoading = useSelector(crimeDataLoading)
 
+    console.log(year)
   useEffect(() => {
     dispatch(fetchAllCounties());
     dispatch(fetchStateData());
@@ -182,17 +183,23 @@ function Map() {
                   <Accordion.Header>Crime:All</Accordion.Header>
                   <Accordion.Body>
                     <select onChange={(e) => handleCrimeChange(e)}>
-                      <option value="All">All</option>
-                      <option value="homicide">Homicide</option>
-                      <option value="assault">Assault</option>
-                      <option value="robbery">Robbery</option>
-                      <option value="arson">Arson</option>
-                      <option value="larcency">Larceny</option>
-                      <option value="rape">Rape</option>
+
+                      <option value="Crime Rate">Crime Rate</option>
+                      <option value="Homicide">Homicide</option>
+                      <option value="Assault">Assault</option>
+                      <option value="Robbery">Robbery</option>
+                      <option value="Arson">Arson</option>
+                      <option value="Larceny">Larceny</option>
+                      {year ? JSON.parse(year) < 2013 ? null : <option value="Rape">Rape</option> : null}
+
                     </select>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+
+              <br></br>
+              <Button onClick={handleSubmit}>View</Button>
+
             </Card.Body>
           {/* </Card> */}
           <div>
@@ -211,14 +218,18 @@ function Map() {
                 <Card.Title><strong>{crimes.name}</strong></Card.Title>
                 <ul className="crime-info" >
                   
-                  <li><h4>Crime Rate:{Math.floor(crimes.crimeRate * 100) / 100}</h4></li>
-                  <li><h4>Total:{crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime}</h4></li>
-                  <li><h4>Murders:{crimes.data.results[0].homicide}</h4></li>
-                  <li><h4>Assaults:{crimes.data.results[0].aggravated_assault}</h4></li>
-                  <li><h4>burglary:{crimes.data.results[0].burglary}</h4></li>
-                  <li><h4>Population:{crimes.data.results[0].population}</h4></li>
-                  <li><h4>Pop-density:{crimes.density} people <br /> per square km</h4></li>
-                </ul>
+
+                  <Row><Col><h4>Crime Rate:</h4></Col><Col><Badge bg="danger">{Math.floor(crimes.crimeRate * 100) / 100}</Badge></Col></Row>
+                  <Row><Col><h4>Total Crimes:</h4></Col><Col><Badge>{(crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime).toLocaleString("en-US")}</Badge></Col></Row>
+                  <Row><Col><h4>Homicide:</h4></Col><Col><Badge>{(crimes.data.results[0].homicide).toLocaleString('en-US')}</Badge></Col></Row>
+                  <Row><Col><h4>Assault:</h4></Col><Col><Badge>{(crimes.data.results[0].aggravated_assault).toLocaleString('en-US')}</Badge></Col></Row>
+                  <Row><Col><h4>Robbery:</h4></Col><Col><Badge>{(crimes.data.results[0].robbery).toLocaleString('en-US')}</Badge></Col></Row>
+                  <Row><Col><h4>Larceny:</h4></Col><Col> <Badge>{(crimes.data.results[0].larceny).toLocaleString('en-US')}</Badge></Col></Row>
+                  {crimes.data.results[0].rape_revised > 0 ? <Row><Col><h4>Rape:</h4></Col><Col> <Badge>{(crimes.data.results[0].rape_revised).toLocaleString()}</Badge></Col></Row> : null }
+                  <Row><Col><h4>Population:</h4></Col><Col> <Badge>{(crimes.data.results[0].population)}</Badge></Col></Row>
+                  <Row><Col><h4>Density:</h4></Col><Col> <Badge>{crimes.density}</Badge> <br /> people per square km</Col></Row>
+                </Container>
+
                 </Card.Body>
               </Card>
           )}

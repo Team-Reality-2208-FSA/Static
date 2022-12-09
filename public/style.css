@@ -275,6 +275,9 @@ button:hover {
 .newsFeedBody {
   margin: 0;
   display: grid;
+
+  grid-template-columns: auto auto auto auto;
+  background-color: #2F4F4F;
   grid-template-columns: auto auto auto auto;
   background-color: black;
   padding-top: 5vmin;
@@ -288,6 +291,7 @@ button:hover {
   }
 
 .card-body, .card-link, .card-text {
+
   font-family: monospace;
   text-decoration: none;
   color: 			white;
@@ -298,6 +302,7 @@ button:hover {
 .card-title.h5 {
 padding-bottom: 10px;
   border-bottom: 3px solid black;
+
   font-family: monospace;
 }
 
