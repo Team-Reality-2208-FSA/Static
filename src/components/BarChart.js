@@ -33,19 +33,23 @@ function BarChart() {
   // }
 
   //This sorts the results by year
-  const myData = [].concat(GraphData.results).sort((a, b) => a.year - b.year);
-
+  //const myData = [].concat(GraphData.results).sort((a, b) => a.year - b.year);
+  //console.log('myData',myData)
   // console.log("myData", myData);
 
   const [chosenState, setChosenState] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [BarValues, setBarValues] = useState([]);
+  const [BarValues, setBarValues] = useState([10, 20, 30, 40, 50, 60]);
+  const [onSub, setonSub] = useState(false);
 
   const setBars = async (crime) => {
+    const myData = [].concat(GraphData.results).sort((a, b) => a.year - b.year);
+    console.log("myData", myData);
     const arr = [];
 
-    for (const crimes of GraphData.results) {
+    for (const crimes of myData) {
       arr.push(crimes[crime]);
+      console.log(arr);
       console.log(crime);
     }
     setBarValues(arr);
@@ -90,26 +94,38 @@ function BarChart() {
   function onSubmit(event) {
     event.preventDefault();
     dispatch(fetchGraphInfo(chosenState));
+    setonSub(true);
   }
 
   const handleChange = (event) => {
     setSelectedCategory(event.target.value);
-    // setBars(selectedCategory);
     dispatch(fetchGraphInfo(chosenState));
   };
 
   return (
     <>
-      <div className="test">
-        <form className="statsForm statsBody" onSubmit={onSubmit}>
-          <label htmlFor="chosenState">State initials</label>
+      <div className="gridBox">
+        <div className="gridBoxHeader">Enter state initials</div>
+        <form className="statsForm " onSubmit={onSubmit}>
           <input
+            className="categoryInput"
+            placeholder="ex. NY"
             value={chosenState}
-            onChange={(evt) => setChosenState(evt.target.value)}
+            onChange={(evt) => setChosenState(evt.target.value.toUpperCase())}
           />
-          <button type="submit">Submit</button>
+          <div>
+            <button className="categoryInput" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
-        <select onChange={handleChange}>
+      </div>
+
+      <div className="gridBox">
+        <div className="gridBoxHeader">Annual crimes by category</div>
+
+        <Bar options={options} data={data} />
+        <select className="categoryInput" onChange={handleChange}>
           <option value="Select an option">Select a category</option>
           <option value="aggravated_assault">Aggravated Assault</option>
           <option value="arson">Arson</option>
@@ -121,8 +137,6 @@ function BarChart() {
           <option value="robbery">Robbery</option>
           <option value="violent_crime">Violent Crime</option>
         </select>
-
-        <Bar className="barChart" options={options} data={data} />
       </div>
     </>
   );

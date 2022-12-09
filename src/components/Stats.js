@@ -9,9 +9,7 @@ import graphSlice from "../store/GraphSlice";
 import { fetchGraphInfo } from "../store/GraphSlice";
 
 function Stats() {
- 
-
-//NEED TO PUT THE SELECTOR FOR THE GRAPH
+  //NEED TO PUT THE SELECTOR FOR THE GRAPH
   // const FBI = useSelector();
   const dispatch = useDispatch();
 
@@ -19,23 +17,19 @@ function Stats() {
     // dispatch(fetchGraphInfo(chosenState));
   }, []);
 
-
   return (
     <>
       <div className="statsHeader">STATS</div>
       <div className="statsBody">
-      
-        </div>
         <div>
           <BarChart />
         </div>
         <div>
           <DoughnutChart />
-        </div>
-        <div>
+
           <LineChart />
         </div>
-      
+      </div>
     </>
   );
 }

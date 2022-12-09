@@ -7,6 +7,7 @@
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
+  
 }
 
 .navbar-brand {
@@ -23,6 +24,28 @@ body {
   margin: 0;
   width: 100vw;
 }
+
+#Homepage {
+  background-color: #000000;
+
+  
+}
+.splashImage {
+  background-color: #000000;
+  width: 100%;
+  height: 35vh;
+}
+
+#STATIC {
+  display: flex;
+  position: absolute;
+  border: 15px #333333;
+  justify-content: center;
+  width: 20vw;
+  top:180px;
+  left: 200px
+}
+
 
 nav {
   align-items: center;
@@ -52,7 +75,7 @@ footer {
   color: #c0c0c0;
   justify-content: space-evenly;
   align-items: center;
-  height: 23vh;
+  height: 30vh;
 }
 
 .footer-column {
@@ -114,24 +137,55 @@ footer {
 /*MAP COMPONENT END*/
 
 /*STATS COMPONENT START*/
-
-.statsBody {
-  margin: 0;
+.gridBox {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 45vmin;
+  height: 45vmin;
+  border: solid lightgray 1px;
+  margin: 2vmin;
+  padding: 1vmin;
+}
+
+.gridBox:hover {
+  border: solid gray 1px;
+}
+.gridBoxHeader {
+  margin-bottom: 2vmin;
+  font-size: 3vmin;
+  text-align: center;
+}
+.statsBody {
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vmin;
-  height: 30vh;
+  height: 95vh;
   width: 100%;
+  
 }
 .statsForm {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   width: 40vmin;
-  height: auto;
+  height: 20vmin;
+}
+.categoryInput {
+  width: 30vmin;
+  height: 3.5vmin;
+  font-size: 2vmin;
+  text-align: center;
+}
+.categoryInput:hover {
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: white;
 }
 
 .selectCounty {
@@ -156,7 +210,7 @@ button:hover {
   height: 5vmin;
 }
 
-/*MAP COMPONENT END*/
+/*STATS COMPONENT END*/
 
 /*BARCHART COMPONENT START*/
 
@@ -167,6 +221,14 @@ button:hover {
 }
 
 /*BARCHART COMPONENT END*/
+
+/*DOUGHNUT CHART START*/
+.doughnutChart {
+  width: 80vmin;
+  height: auto;
+  padding: 6vmin;
+}
+/*DOUGHNUT CHART START*/
 
 /*TEAM COMPONENT START*/
 
@@ -203,66 +265,52 @@ button:hover {
 .profileImg-and-profileText {
   border: solid black 1px;
   padding: 1vmin;
-  height: 50vmin;
+  height: 60vmin;
 }
 
 /*TEAM COMPONENT END*/
 
-
-
-
 /*NEWSFEED COMPONENT START*/
 
-.newsFeedBody{
+.newsFeedBody {
   margin: 0;
   display: grid;
-<<<<<<< Updated upstream
-  grid-template-columns: auto auto auto;
-  background-color: lightgray;
-=======
+
   grid-template-columns: auto auto auto auto;
   background-color: #2F4F4F;
->>>>>>> Stashed changes
+  grid-template-columns: auto auto auto auto;
+  background-color: black;
   padding-top: 5vmin;
+  justify-content: space-evenly;
 }
 
-.newsFeedArticle {
-  
-  border: 2px solid black;
-  margin: 5px
-}
 
-<<<<<<< Updated upstream
-.articleTitle {
-=======
 .card {
   margin-bottom: 100px;
   margin-left: 20px;
   }
 
 .card-body, .card-link, .card-text {
-  text-decoration: none;
+
   font-family: monospace;
-  height: auto;
-  color: white;
-  background-color: #A9A9A9;
+  text-decoration: none;
+  color: 			white;
+  background-color: #333333;
   }
 
 
 .card-title.h5 {
+padding-bottom: 10px;
   border-bottom: 3px solid black;
->>>>>>> Stashed changes
+
   font-family: monospace;
-  text-decoration: underline;
-  font-size: 10px;
 }
 
 .articleImage {
- margin-left: 125px;
- margin-right: 125px;
- width: 20vw;
- height: 10vh;
-
+  margin-left: 125px;
+  margin-right: 125px;
+  width: 20vw;
+  height: 10vh;
 }
 
 /*NEWSFEED COMPONENT END*/

@@ -5,6 +5,7 @@ import Map from "./Map";
 import { Link } from "react-router-dom";
 import Stats from "./Stats";
 import Team from "./Team";
+import Homepage from "./Homepage";
 
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
@@ -22,7 +23,7 @@ const Main = () => {
           <Navbar.Brand href="/">S T A T I C</Navbar.Brand>
           <Nav className="nav-middle-links">
             <Nav.Link href="stats">Stats</Nav.Link>
-            <Nav.Link href="stats">Top 10</Nav.Link>
+            <Nav.Link href="map">Map</Nav.Link>
             <Nav.Link href="newsfeed">News Feed</Nav.Link>
           </Nav>
           <NavDropdown title="Login / Sign Up">
@@ -35,9 +36,8 @@ const Main = () => {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Map />} />
-        <Route path="/FBI" element={<ALLFBI />} />
-        <Route path="/newsfeed" element={<Stats />} />
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/map" element={<Map />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/team" element={<Team />} />
         <Route path="/newsfeed" element={<Newsfeed />} />
