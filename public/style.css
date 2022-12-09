@@ -92,9 +92,9 @@ footer {
   border: 2px solid rgb(242, 230, 191);
   display: flex;
   flex-direction: column;
-  width: 18vw;
+  width: 30vw;
   margin: 10px;
-  max-height: 40vh;
+  max-height: 45vh;
 }
 .crime-info {
   display: flex;
