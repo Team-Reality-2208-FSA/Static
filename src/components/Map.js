@@ -41,27 +41,113 @@ function Map() {
     dispatch(fetchStateData());
   }, []);
 
-  const getColor = (d, name) => {
+  const getColor = (d) => {
+    if(filter === "Crime Rate") {
     return (
-      d > 80 ? "#800026" :
+        d > 80 ? "#800026" :
         d > 70 ? "#BD0026" :
-          d > 60 ? "#E31A1C" :
-            d > 50 ? "#FC4E2A" :
-              d > 40 ? "#FD8D3C" :
-                d > 30 ? "#FEB24C" :
-                  d > 20 ? "#FED976" : "#FFEDA0");
-  };
+        d > 60 ? "#E31A1C" :
+        d > 50 ? "#FC4E2A" :
+        d > 40 ? "#FD8D3C" :
+        d > 30 ? "#FEB24C" :
+        d > 20 ? "#FED976" : "#FFEDA0");}
+    if(filter === 'Homicide') {
+      
+      return (
+        d > 100 ? "#800026" :
+        d > 80 ? "#BD0026" :
+        d > 60 ? "#E31A1C" :
+        d > 40 ? "#FC4E2A" :
+        d > 20 ? "#FD8D3C" :
+        d > 15 ? "#FEB24C" :
+        d > 10 ? "#FED976" : "#FFEDA0");
+    }
+    if(filter === "Assault") {
+      console.log(d)
+      return (
+        d > 150 ? "#800026" :
+        d > 100 ? "#BD0026" :
+        d > 80 ? "#E31A1C" :
+        d > 60 ? "#FC4E2A" :
+        d > 40 ? "#FD8D3C" :
+        d > 20 ? "#FEB24C" :
+        d > 10 ? "#FED976" : "#FFEDA0");
+    }
+    if(filter === "Arson") {
+      console.log(d)
+      return (
+        d > 200 ? "#800026" :
+        d > 150 ? "#BD0026" :
+        d > 100 ? "#E31A1C" :
+        d > 70 ? "#FC4E2A" :
+        d > 50 ? "#FD8D3C" :
+        d > 20 ? "#FEB24C" :
+        d > 10 ? "#FED976" : "#FFEDA0");
+    }
+    if(filter === "Robbery") {
+      console.log(d)
+      return (
+        d > 80 ? "#800026" :
+        d > 70 ? "#BD0026" :
+        d > 60 ? "#E31A1C" :
+        d > 50 ? "#FC4E2A" :
+        d > 40 ? "#FD8D3C" :
+        d > 30 ? "#FEB24C" :
+        d > 15 ? "#FED976" : "#FFEDA0");
+    }
+    if(filter === "Larceny") {
+      console.log(d)
+      return (
+        d > 120 ? "#800026" :
+        d > 100 ? "#BD0026" :
+        d > 90 ? "#E31A1C" :
+        d > 80 ? "#FC4E2A" :
+        d > 70 ? "#FD8D3C" :
+        d > 60 ? "#FEB24C" :
+        d > 50 ? "#FED976" : "#FFEDA0");
+    }
+    if(filter === "Rape") {
+      console.log(d)
+      return (
+        d > 70 ? "#800026" :
+        d > 60 ? "#BD0026" :
+        d > 50 ? "#E31A1C" :
+        d > 40 ? "#FC4E2A" :
+        d > 30 ? "#FD8D3C" :
+        d > 20 ? "#FEB24C" :
+        d > 10 ? "#FED976" : "#FFEDA0");
+    }
+    };
 
 
   const style = (feature) => {
     const state = crimeData[feature.id - 1]
     let CR = 0
-    let name = ''
+    let val = ''
     if (state) {
       let population = state.results[0].population
       let totalCrimes = state.results[0].property_crime + state.results[0].violent_crime
       CR = Math.floor((population / totalCrimes))
-      name = state.results[0].state_abbr
+      
+      switch(filter){
+        case "Homicide":
+          val = Math.floor((population / state.results[0].homicide)) / 1000;
+          break;
+        case "Assault" :
+          val = Math.floor((population / state.results[0].aggravated_assault)) / 10;
+          break;
+        case "Arson" :
+          val = Math.floor((population / state.results[0].arson)) / 100;
+          break;
+        case "Larceny" :
+          val = Math.floor((population / state.results[0].larceny));
+          break;
+        case "Rape" :
+          val = Math.floor((population / state.results[0].rape_revised)) / 100;
+          break;
+        default:
+          val = CR
+      }
     }
     return {
       fillColor: getColor(val),
@@ -72,6 +158,7 @@ function Map() {
       fillOpacity: 0.7,
     };
   };
+
 
   const countystyle = (feature) => {
     return {
