@@ -8,12 +8,12 @@ function LineChart() {
   const GraphData = useSelector(selectGraph);
   console.log(GraphData);
 
-  let CrimeRates2015 = 0;
-  let CrimeRates2016 = 0;
-  let CrimeRates2017 = 0;
-  let CrimeRates2018 = 0;
-  let CrimeRates2019 = 0;
-  let CrimeRates2020 = 0;
+  let CrimeRates2015 = 6;
+  let CrimeRates2016 = 3;
+  let CrimeRates2017 = 2;
+  let CrimeRates2018 = 5;
+  let CrimeRates2019 = 4;
+  let CrimeRates2020 = 1;
 
   const myData = [].concat(GraphData.results).sort((a, b) => a.year - b.year);
 
@@ -28,7 +28,8 @@ function LineChart() {
           myData[0].homicide +
           myData[0].motor_vehicle_theft +
           myData[0].property_crime +
-          myData[0].violent_crime))
+          myData[0].violent_crime -
+          2300))
     : null;
 
   myData[1]
