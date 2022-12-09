@@ -5,7 +5,7 @@ import { fetchNewsFeed, selectNewsFeed } from "../store/newsfeedSlice";
 import Card from "react-bootstrap/Card";
 
 
-const newsfeed = () => {
+const Newsfeed = () => {
   const dispatch = useDispatch();
 
   const NewsFeed = useSelector(selectNewsFeed);
@@ -36,6 +36,6 @@ const newsfeed = () => {
   );
 };
 
-export default newsfeed;
+export default Newsfeed;
 
 

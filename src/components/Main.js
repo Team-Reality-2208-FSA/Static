@@ -9,7 +9,7 @@ import Homepage from "./Homepage";
 
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
-import Newsfeed from "./newsfeed";
+import Newsfeed from "./newsfeed.js";
 
 
 /* 

@@ -2,29 +2,11 @@ import React, { useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { statesData } from "../states.js";
-import {
-  fetchAllCounties,
-  selectGeoLoading,
-  findCounties,
-  selectCounties,
-  selectToggle,
-} from "../store/CountySlice";
-import {
-  fetchStateData,
-  selectStateData,
-  findCrimeData,
-  selectCrimes,
-  crimeDataLoading,
-} from "../store/stateDataslice.js";
-import {
-  Card,
-  Container,
-  Collapse,
-  Accordion,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { statesData } from '../states.js'
+import { fetchAllCounties, selectGeoLoading, findCounties, selectCounties, selectToggle } from '../store/CountySlice'
+import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeDataLoading, fetchStateDataByYear, filterCrimeData, selectFilter } from "../store/stateDataslice.js";
+import { Card, Container, Collapse, Accordion, Row, Col, Button, Badge } from "react-bootstrap"
+
 
 function Map() {
   const dispatch = useDispatch();
@@ -36,6 +18,7 @@ function Map() {
   const crimes = useSelector(selectCrimes)
   const crimeLoading = useSelector(crimeDataLoading)
 
+    console.log(year)
   useEffect(() => {
     dispatch(fetchAllCounties());
     dispatch(fetchStateData());
@@ -182,17 +165,18 @@ function Map() {
                   <Accordion.Header>Crime:All</Accordion.Header>
                   <Accordion.Body>
                     <select onChange={(e) => handleCrimeChange(e)}>
-                      <option value="All">All</option>
-                      <option value="homicide">Homicide</option>
-                      <option value="assault">Assault</option>
-                      <option value="robbery">Robbery</option>
-                      <option value="arson">Arson</option>
-                      <option value="larcency">Larceny</option>
-                      <option value="rape">Rape</option>
+                      <option value="Crime Rate">Crime Rate</option>
+                      <option value="Homicide">Homicide</option>
+                      <option value="Assault">Assault</option>
+                      <option value="Robbery">Robbery</option>
+                      <option value="Arson">Arson</option>
+                      <option value="Larceny">Larceny</option>
+                      <option value="Rape">Rape</option>
                     </select>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+              <Button onClick={handleSubmit}>View</Button>
             </Card.Body>
           {/* </Card> */}
           <div>
@@ -211,14 +195,16 @@ function Map() {
                 <Card.Title><strong>{crimes.name}</strong></Card.Title>
                 <ul className="crime-info" >
                   
-                  <li><h4>Crime Rate:{Math.floor(crimes.crimeRate * 100) / 100}</h4></li>
-                  <li><h4>Total:{crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime}</h4></li>
-                  <li><h4>Murders:{crimes.data.results[0].homicide}</h4></li>
-                  <li><h4>Assaults:{crimes.data.results[0].aggravated_assault}</h4></li>
-                  <li><h4>burglary:{crimes.data.results[0].burglary}</h4></li>
-                  <li><h4>Population:{crimes.data.results[0].population}</h4></li>
-                  <li><h4>Pop-density:{crimes.density} people <br /> per square km</h4></li>
-                </ul>
+                  <Row><Col><h4>Crime Rate:</h4></Col><Col>{Math.floor(crimes.crimeRate * 100) / 100}</Col></Row>
+                  <Row><Col><h4>Total Crimes:</h4></Col><Col>{crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime}</Col></Row>
+                  <Row><Col><h4>Murders:</h4></Col><Col>{crimes.data.results[0].homicide}</Col></Row>
+                  <Row><Col><h4>Assaults:</h4></Col><Col>{crimes.data.results[0].aggravated_assault}</Col></Row>
+                  <Row><Col><h4>Robbery:</h4></Col><Col>{crimes.data.results[0].robbery}</Col></Row>
+                  <Row><Col><h4>Larceny:</h4></Col><Col> {crimes.data.results[0].larceny}</Col></Row>
+                  <Row><Col><h4>Rape:</h4></Col><Col> {crimes.data.results[0].rape_revised}</Col></Row>
+                  <Row><Col><h4>Population:</h4></Col><Col> {crimes.data.results[0].population}</Col></Row>
+                  <Row><Col><h4>Density:</h4></Col><Col> {crimes.density} <br /> people per square km</Col></Row>
+                </Container>
                 </Card.Body>
               </Card>
           )}
