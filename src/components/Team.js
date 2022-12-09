@@ -37,10 +37,8 @@ function Team() {
               src="https://media-exp1.licdn.com/dms/image/D4D03AQGQTYv86p_mww/profile-displayphoto-shrink_800_800/0/1668442758714?e=1675296000&v=beta&t=SMycPwOAssTk5CoQ6HwmZJp9EZTZfuanwe8d2SKeo0U"
             />
             <div className="profileText">
-              TI'm a Nerd and I'm Proud. I love to problem solve, so software
-              engineering is definitely where I need to be. My first job was as
-              a dish washer where I quickly moved up the ranks to be the
-              assistant Director
+              I'm a Nerd and I'm Proud. I love to problem solve, so Fullstack
+              development is definitely where I need to be. 
             </div>
           </div>
           <div className="profileImg-and-profileText">
