@@ -77,6 +77,7 @@ function DoughnutChart() {
           "#e74c3c",
         ],
         pointBackgroundColor: "rgba(255,206,86,0.2)",
+
       },
     ],
   };
