@@ -125,12 +125,15 @@ footer {
   margin: 2vmin;
   padding: 1vmin;
 }
+
+.gridBox:hover {
+  border: solid gray 1px;
+}
 .statsBody {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vmin;
-  height: 200vh;
+  height: 120vh;
   width: 100%;
 }
 .statsForm {
