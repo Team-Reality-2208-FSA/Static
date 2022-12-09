@@ -37,8 +37,7 @@ const Main = () => {
 
       <Routes>
         <Route path="/" element={<Map />} />
-        <Route path="/FBI" element={<ALLFBI />} />
-        <Route path="/newsfeed" element={<Stats />} />
+        {/* <Route path="/FBI" element={<ALLFBI />} /> */}
         <Route path="/stats" element={<Stats />} />
         <Route path="/team" element={<Team />} />
         <Route path="/newsfeed" element={<Newsfeed />} />

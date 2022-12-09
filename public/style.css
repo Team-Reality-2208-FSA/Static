@@ -7,6 +7,7 @@
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
+  
 }
 
 .navbar-brand {
@@ -124,6 +125,7 @@ footer {
   margin-top: 10vmin;
   height: 200vh;
   width: 100%;
+  
 }
 .statsForm {
   display: flex;
@@ -222,7 +224,7 @@ button:hover {
 .newsFeedBody {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: #2F4F4F;
+  background-color: black;
   padding-top: 5vmin;
   justify-content: space-evenly;
 }
@@ -233,15 +235,15 @@ button:hover {
   }
 
 .card-body, .card-link, .card-text {
-  text-decoration: none;
   font-family: monospace;
-  height: auto;
-  color: white;
-  background-color: #A9A9A9;
+  text-decoration: none;
+  color: 			white;
+  background-color: #333333;
   }
 
 
 .card-title.h5 {
+padding-bottom: 10px;
   border-bottom: 3px solid black;
   font-family: monospace;
 }
