@@ -21,26 +21,14 @@ const newsfeed = () => {
     <div className="newsFeedBody">
       {NewsFeed.newsFeed
         ? NewsFeed.newsFeed.articles.map((article) => (
-            <Card style={{ width: "18rem" }}>
+
+            <Card id="card-body" border="warning"  style={{ width: "18rem" }}>
               <Card.Img variant="top" src={article.urlToImage} />
               <Card.Body>
-                <Card.Title>
-                  {
-                    <a className="card-link" href={article.url}>
-                      {article.title}
-                    </a>
-                  }
+                <Card.Title id='card-title' >
+                  { <a id="card-link" href={article.url}>{article.title}</a>}
                 </Card.Title>
-                <Card.Text>{article.description}</Card.Text>
-              </Card.Body>
-            </Card>
-            <Card border="warning"  style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={article.urlToImage} />
-              <Card.Body>
-                <Card.Title>
-                  { <a className="card-link" href={article.url}>{article.title}</a>}
-                </Card.Title>
-                <Card.Text>
+                <Card.Text id="card-text" >
                   {article.description}
                   </Card.Text>
               </Card.Body>

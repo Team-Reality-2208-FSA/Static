@@ -289,17 +289,21 @@ button:hover {
   margin-left: 20px;
 }
 
-.card-body,
-.card-link,
-.card-text {
-  font-family: monospace;
-  text-decoration: none;
-  color: white;
-  background-color: #333333;
-}
 
-.articleTitle {
-  font-family: monospace;
+
+  #card-body, #card-link, #card-text{
+    font-family: monospace;
+    text-decoration: none;
+    color: 			white;
+    background-color: #333333;
+
+  }
+
+
+#card-title {
+padding-bottom: 10px;
+border-bottom: 3px solid black;
+font-family: monospace;
 }
 
 .articleImage {
