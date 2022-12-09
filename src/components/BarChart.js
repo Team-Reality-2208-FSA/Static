@@ -108,11 +108,16 @@ function BarChart() {
         <form className="statsForm " onSubmit={onSubmit}>
           <label htmlFor="chosenState">State initials</label>
           <input
+            className="categoryInput"
             placeholder="ex. NY"
             value={chosenState}
             onChange={(evt) => setChosenState(evt.target.value.toUpperCase())}
           />
-          <button type="submit">Submit</button>
+          <div>
+            <button className="categoryInput" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
 
