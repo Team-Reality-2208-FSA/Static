@@ -25,6 +25,28 @@ body {
   width: 100vw;
 }
 
+#Homepage {
+  background-color: #000000;
+
+  
+}
+.splashImage {
+  background-color: #000000;
+  width: 100%;
+  height: 35vh;
+}
+
+#STATIC {
+  display: flex;
+  position: absolute;
+  border: 15px #333333;
+  justify-content: center;
+  width: 20vw;
+  top:180px;
+  left: 200px
+}
+
+
 nav {
   align-items: center;
   background-color: #333333;
@@ -53,7 +75,7 @@ footer {
   color: #c0c0c0;
   justify-content: space-evenly;
   align-items: center;
-  height: 23vh;
+  height: 30vh;
 }
 
 .footer-column {
@@ -93,9 +115,9 @@ footer {
   border: 2px solid rgb(242, 230, 191);
   display: flex;
   flex-direction: column;
-  width: 18vw;
+  width: 30vw;
   margin: 10px;
-  max-height: 40vh;
+  max-height: 45vh;
 }
 .crime-info {
   display: flex;
@@ -115,25 +137,55 @@ footer {
 /*MAP COMPONENT END*/
 
 /*STATS COMPONENT START*/
-
-.statsBody {
-  margin: 0;
+.gridBox {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 45vmin;
+  height: 45vmin;
+  border: solid lightgray 1px;
+  margin: 2vmin;
+  padding: 1vmin;
+}
+
+.gridBox:hover {
+  border: solid gray 1px;
+}
+.gridBoxHeader {
+  margin-bottom: 2vmin;
+  font-size: 3vmin;
+  text-align: center;
+}
+.statsBody {
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vmin;
-  height: 200vh;
+  height: 95vh;
   width: 100%;
   
 }
 .statsForm {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   width: 40vmin;
-  height: auto;
+  height: 20vmin;
+}
+.categoryInput {
+  width: 30vmin;
+  height: 3.5vmin;
+  font-size: 2vmin;
+  text-align: center;
+}
+.categoryInput:hover {
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: white;
 }
 
 .selectCounty {
@@ -158,7 +210,7 @@ button:hover {
   height: 5vmin;
 }
 
-/*MAP COMPONENT END*/
+/*STATS COMPONENT END*/
 
 /*BARCHART COMPONENT START*/
 
@@ -171,13 +223,12 @@ button:hover {
 /*BARCHART COMPONENT END*/
 
 /*DOUGHNUT CHART START*/
-.doughnutChart{
+.doughnutChart {
   width: 80vmin;
   height: auto;
   padding: 6vmin;
 }
 /*DOUGHNUT CHART START*/
-
 
 /*TEAM COMPONENT START*/
 
@@ -214,7 +265,7 @@ button:hover {
 .profileImg-and-profileText {
   border: solid black 1px;
   padding: 1vmin;
-  height: 50vmin;
+  height: 60vmin;
 }
 
 /*TEAM COMPONENT END*/
@@ -222,12 +273,14 @@ button:hover {
 /*NEWSFEED COMPONENT START*/
 
 .newsFeedBody {
+  margin: 0;
   display: grid;
   grid-template-columns: auto auto auto auto;
   background-color: black;
   padding-top: 5vmin;
   justify-content: space-evenly;
 }
+
 
 .card {
   margin-bottom: 100px;
@@ -247,4 +300,12 @@ padding-bottom: 10px;
   border-bottom: 3px solid black;
   font-family: monospace;
 }
+
+.articleImage {
+  margin-left: 125px;
+  margin-right: 125px;
+  width: 20vw;
+  height: 10vh;
+}
+
 /*NEWSFEED COMPONENT END*/

@@ -1,12 +1,30 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
-import { useState } from 'react'
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { statesData } from '../states.js'
-import { fetchAllCounties, selectGeoLoading, findCounties, selectCounties, selectToggle } from '../store/CountySlice'
-import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeDataLoading } from "../store/stateDataslice.js";
-import { Card, Container, Collapse, Accordion, Row, Col } from "react-bootstrap"
-
+import { statesData } from "../states.js";
+import {
+  fetchAllCounties,
+  selectGeoLoading,
+  findCounties,
+  selectCounties,
+  selectToggle,
+} from "../store/CountySlice";
+import {
+  fetchStateData,
+  selectStateData,
+  findCrimeData,
+  selectCrimes,
+  crimeDataLoading,
+} from "../store/stateDataslice.js";
+import {
+  Card,
+  Container,
+  Collapse,
+  Accordion,
+  Row,
+  Col,
+} from "react-bootstrap";
 
 function Map() {
   const dispatch = useDispatch();
@@ -19,9 +37,9 @@ function Map() {
   const crimeLoading = useSelector(crimeDataLoading)
 
   useEffect(() => {
-    dispatch(fetchAllCounties())
-    dispatch(fetchStateData())
-  }, [])
+    dispatch(fetchAllCounties());
+    dispatch(fetchStateData());
+  }, []);
 
   const getColor = (d, name) => {
     return (
@@ -34,6 +52,7 @@ function Map() {
                   d > 20 ? "#FED976" : "#FFEDA0");
   };
 
+
   const style = (feature) => {
     const state = crimeData[feature.id - 1]
     let CR = 0
@@ -45,7 +64,7 @@ function Map() {
       name = state.results[0].state_abbr
     }
     return {
-      fillColor: getColor(CR, name),
+      fillColor: getColor(val),
       weight: 2,
       opacity: 1,
       color: "white",
@@ -62,9 +81,8 @@ function Map() {
       color: "white",
       dashArray: "3",
       fillOpacity: 0.7,
-    }
-  }
-
+    };
+  };
 
   // function showCounties(e) {
   //   setStateLayer((st) => !st)
@@ -84,9 +102,9 @@ function Map() {
   };
 
   const showData = (e) => {
-    const name = e.target.feature.properties.name
-    const density = e.target.feature.properties.density
-    let id = e.target.feature.id
+    const name = e.target.feature.properties.name;
+    const density = e.target.feature.properties.density;
+    let id = e.target.feature.id;
 
     const obj = {
       state: name,
@@ -94,11 +112,11 @@ function Map() {
       crimeRate: "Crime rate goes here",
       population: "population goes here",
       density: density,
-      id: id
+      id: id,
     };
-    setOnselect({ state: "yeah" })
-    dispatch(findCrimeData(obj))
-  }
+    setOnselect({ state: "yeah" });
+    dispatch(findCrimeData(obj));
+  };
 
   const onEachFeature = (feature, layer) => {
     layer.on({
@@ -125,7 +143,7 @@ function Map() {
   return (
     <Container className="map" fluid>
       <Row>
-        <Col xs={9}>
+        <Col xs={8}>
           <MapContainer
             className="mapView"
             center={[39, -95]}
@@ -138,11 +156,15 @@ function Map() {
               url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
             />
             {!loading && !stateLayer ? (
-              <GeoJSON data={counties} style={countystyle}
-              />) : null}
-            {crimeData && !crimeLoading ?
-              <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature} /> : null
-            }
+              <GeoJSON data={counties} style={countystyle} />
+            ) : null}
+            {crimeData && !crimeLoading ? (
+              <GeoJSON
+                data={statesData}
+                style={style}
+                onEachFeature={onEachFeature}
+              />
+            ) : null}
           </MapContainer>
         </Col>
         <Col>
