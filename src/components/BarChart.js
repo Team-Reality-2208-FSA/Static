@@ -118,7 +118,9 @@ function BarChart() {
 
       <div className="gridBox">
         <div className="gridBoxHeader">Annual crimes by category</div>
-        <select onChange={handleChange}>
+
+        <Bar options={options} data={data} />
+        <select className="categoryInput" onChange={handleChange}>
           <option value="Select an option">Select a category</option>
           <option value="aggravated_assault">Aggravated Assault</option>
           <option value="arson">Arson</option>
@@ -130,7 +132,6 @@ function BarChart() {
           <option value="robbery">Robbery</option>
           <option value="violent_crime">Violent Crime</option>
         </select>
-        <Bar options={options} data={data} />
       </div>
     </>
   );
