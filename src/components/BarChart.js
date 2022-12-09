@@ -105,8 +105,8 @@ function BarChart() {
   return (
     <>
       <div className="gridBox">
+        <div className="gridBoxHeader">Enter state initials</div>
         <form className="statsForm " onSubmit={onSubmit}>
-          <label htmlFor="chosenState">State initials</label>
           <input
             className="categoryInput"
             placeholder="ex. NY"
