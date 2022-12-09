@@ -39,7 +39,7 @@ function BarChart() {
 
   const [chosenState, setChosenState] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [BarValues, setBarValues] = useState([]);
+  const [BarValues, setBarValues] = useState([10, 20, 30, 40, 50, 60]);
   const [onSub, setonSub] = useState(false);
 
   const setBars = async (crime) => {
