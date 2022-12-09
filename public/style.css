@@ -114,13 +114,15 @@ footer {
 /*MAP COMPONENT END*/
 
 /*STATS COMPONENT START*/
+
 .statsBody {
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 10vmin;
-  height: 190vh;
+  height: 30vh;
   width: 100%;
 }
 .statsForm {
@@ -128,8 +130,8 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 30vmin;
-  height: 50vh;
+  width: 40vmin;
+  height: auto;
 }
 
 .selectCounty {
@@ -153,16 +155,21 @@ button:hover {
   width: 50%;
   height: 5vmin;
 }
+
 /*MAP COMPONENT END*/
 
 /*BARCHART COMPONENT START*/
+
 .barChart {
-  width: 60vmin;
+  width: 70vw;
   height: auto;
+  padding: 6vmin;
 }
+
 /*BARCHART COMPONENT END*/
 
 /*TEAM COMPONENT START*/
+
 .teamBody {
   margin: 0;
   display: flex;
@@ -200,3 +207,38 @@ button:hover {
 }
 
 /*TEAM COMPONENT END*/
+
+
+
+
+/*NEWSFEED COMPONENT START*/
+
+.newsFeedBody{
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: lightgray;
+  padding-top: 5vmin;
+}
+
+.newsFeedArticle {
+  
+  border: 2px solid black;
+  margin: 5px
+}
+
+.articleTitle {
+  font-family: monospace;
+  text-decoration: underline;
+  font-size: 10px;
+}
+
+.articleImage {
+ margin-left: 125px;
+ margin-right: 125px;
+ width: 20vw;
+ height: 10vh;
+
+}
+
+/*NEWSFEED COMPONENT END*/
