@@ -1,5 +1,5 @@
 import React from "react";
-import { ALLFBI } from "./";
+
 import { Routes, Route } from "react-router-dom";
 import Map from "./Map";
 import { Link } from "react-router-dom";

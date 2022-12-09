@@ -298,9 +298,7 @@ button:hover {
   background-color: #333333;
 }
 
-.card-title.h5 {
-  padding-bottom: 10px;
-  border-bottom: 3px solid black;
+.articleTitle {
   font-family: monospace;
 }
 
