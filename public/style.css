@@ -114,10 +114,19 @@ footer {
 /*MAP COMPONENT END*/
 
 /*STATS COMPONENT START*/
-
+.gridBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 45vmin;
+  height: 45vmin;
+  border: solid lightgray 1px;
+  margin: 2vmin;
+  padding: 1vmin;
+}
 .statsBody {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 10vmin;
@@ -168,13 +177,12 @@ button:hover {
 /*BARCHART COMPONENT END*/
 
 /*DOUGHNUT CHART START*/
-.doughnutChart{
+.doughnutChart {
   width: 80vmin;
   height: auto;
   padding: 6vmin;
 }
 /*DOUGHNUT CHART START*/
-
 
 /*TEAM COMPONENT START*/
 
@@ -216,12 +224,9 @@ button:hover {
 
 /*TEAM COMPONENT END*/
 
-
-
-
 /*NEWSFEED COMPONENT START*/
 
-.newsFeedBody{
+.newsFeedBody {
   margin: 0;
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -232,7 +237,7 @@ button:hover {
 
 .newsFeedArticle {
   border: 2px solid black;
-  margin: 5px
+  margin: 5px;
 }
 
 .card-body,
@@ -246,10 +251,9 @@ button:hover {
 }
 
 .articleImage {
- margin-left: 125px;
- margin-right: 125px;
- width: 20vw;
- height: 10vh;
-
+  margin-left: 125px;
+  margin-right: 125px;
+  width: 20vw;
+  height: 10vh;
 }
 /*NEWSFEED COMPONENT END*/
