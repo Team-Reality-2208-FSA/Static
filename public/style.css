@@ -7,7 +7,6 @@
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
-  
 }
 
 .navbar-brand {
@@ -27,8 +26,6 @@ body {
 
 #Homepage {
   background-color: #000000;
-
-  
 }
 .splashImage {
   background-color: #000000;
@@ -42,10 +39,9 @@ body {
   border: 15px #333333;
   justify-content: center;
   width: 20vw;
-  top:180px;
-  left: 200px
+  top: 180px;
+  left: 200px;
 }
-
 
 nav {
   align-items: center;
@@ -68,7 +64,13 @@ nav {
   width: 60vmin;
   font-size: 2.25vmin;
 }
-
+.links {
+  text-decoration: none;
+  color: lightgray;
+}
+.links:hover {
+  color: white;
+}
 footer {
   display: flex;
   background-color: #333333;
@@ -76,6 +78,7 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   height: 30vh;
+  text-decoration: none;
 }
 
 .footer-column {
@@ -85,6 +88,7 @@ footer {
   text-align: center;
   height: 18vh;
   font-size: 2vmin;
+  text-decoration: none;
 }
 
 .footer-column-name {
@@ -163,7 +167,6 @@ footer {
   justify-content: center;
   height: 95vh;
   width: 100%;
-  
 }
 .statsForm {
   display: flex;
@@ -281,22 +284,22 @@ button:hover {
   justify-content: space-evenly;
 }
 
-
 .card {
   margin-bottom: 100px;
   margin-left: 20px;
-  }
+}
 
-.card-body, .card-link, .card-text {
+.card-body,
+.card-link,
+.card-text {
   font-family: monospace;
   text-decoration: none;
-  color: 			white;
+  color: white;
   background-color: #333333;
-  }
-
+}
 
 .card-title.h5 {
-padding-bottom: 10px;
+  padding-bottom: 10px;
   border-bottom: 3px solid black;
   font-family: monospace;
 }
