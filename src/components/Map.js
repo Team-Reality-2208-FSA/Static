@@ -1,30 +1,12 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
-import { useState } from "react";
+import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { statesData } from "../states.js";
-import {
-  fetchAllCounties,
-  selectGeoLoading,
-  findCounties,
-  selectCounties,
-  selectToggle,
-} from "../store/CountySlice";
-import {
-  fetchStateData,
-  selectStateData,
-  findCrimeData,
-  selectCrimes,
-  crimeDataLoading,
-} from "../store/stateDataslice.js";
-import {
-  Card,
-  Container,
-  Collapse,
-  Accordion,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { statesData } from '../states.js'
+import { fetchAllCounties, selectGeoLoading, findCounties, selectCounties, selectToggle } from '../store/CountySlice'
+import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeDataLoading, fetchStateDataByYear, filterCrimeData, selectFilter } from "../store/stateDataslice.js";
+import { Card, Container, Collapse, Accordion, Row, Col, Button, Badge } from "react-bootstrap"
+
 
 function Map() {
   const dispatch = useDispatch();
@@ -35,12 +17,14 @@ function Map() {
   const crimeData = useSelector(selectStateData)
   const crimes = useSelector(selectCrimes)
   const crimeLoading = useSelector(crimeDataLoading)
+  const [year, setYear] = useState('2020')
+  const [offense, setOffense] = useState('Crime Rate')
+  const filter = useSelector(selectFilter)
 
-    console.log(year)
   useEffect(() => {
-    dispatch(fetchAllCounties());
-    dispatch(fetchStateData());
-  }, []);
+    dispatch(fetchAllCounties())
+    dispatch(fetchStateData())
+  }, [])
 
   const getColor = (d) => {
     if(filter === "Crime Rate") {
@@ -160,7 +144,6 @@ function Map() {
     };
   };
 
-
   const countystyle = (feature) => {
     return {
       fillColor: "blue",
@@ -169,8 +152,9 @@ function Map() {
       color: "white",
       dashArray: "3",
       fillOpacity: 0.7,
-    };
-  };
+    }
+  }
+
 
   // function showCounties(e) {
   //   setStateLayer((st) => !st)
@@ -185,14 +169,14 @@ function Map() {
   // }
 
   const resetHighlight = (e) => {
-    setOnselect({})
+    setOnselect(false)
     e.target.setStyle(style(e.target.feature));
   };
 
   const showData = (e) => {
-    const name = e.target.feature.properties.name;
-    const density = e.target.feature.properties.density;
-    let id = e.target.feature.id;
+    const name = e.target.feature.properties.name
+    const density = e.target.feature.properties.density
+    let id = e.target.feature.id
 
     const obj = {
       state: name,
@@ -200,11 +184,11 @@ function Map() {
       crimeRate: "Crime rate goes here",
       population: "population goes here",
       density: density,
-      id: id,
+      id: id
     };
-    setOnselect({ state: "yeah" });
-    dispatch(findCrimeData(obj));
-  };
+    setOnselect({ state: "yeah" })
+    dispatch(findCrimeData(obj))
+  }
 
   const onEachFeature = (feature, layer) => {
     layer.on({
@@ -216,10 +200,17 @@ function Map() {
 
   const handleYearChange = (e) => {
     console.log(e.target.value)
+    setYear(e.target.value)
   }
 
   const handleCrimeChange = (e) => {
     console.log(e.target.value)
+    setOffense(e.target.value)
+  }
+  const handleSubmit = (e) =>{
+    console.log(year, offense)
+    dispatch(fetchStateDataByYear({year,offense}))
+    dispatch(filterCrimeData(offense))
   }
 
   const mapStyle = {
@@ -244,79 +235,64 @@ function Map() {
               url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
             />
             {!loading && !stateLayer ? (
-              <GeoJSON data={counties} style={countystyle} />
-            ) : null}
-            {crimeData && !crimeLoading ? (
-              <GeoJSON
-                data={statesData}
-                style={style}
-                onEachFeature={onEachFeature}
-              />
-            ) : null}
+              <GeoJSON data={counties} style={countystyle}
+              />) : null}
+            {crimeData && !crimeLoading ?
+              <GeoJSON data={statesData} style={style} onEachFeature={onEachFeature} /> : null
+            }
           </MapContainer>
         </Col>
         <Col>
-          {/* <Card> */}
+          <Card>
             <Card.Body>
-              <Accordion>
+              <Accordion alwaysOpen>
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header>Year:2020</Accordion.Header>
+                  <Accordion.Header>Year: {year}</Accordion.Header>
                   <Accordion.Body>
                     1985-2020:
                     <input onChange={(e) => handleYearChange(e)}></input>
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
-                  <Accordion.Header>Crime:All</Accordion.Header>
+                  <Accordion.Header>Crime: {offense}</Accordion.Header>
                   <Accordion.Body>
                     <select onChange={(e) => handleCrimeChange(e)}>
-
                       <option value="Crime Rate">Crime Rate</option>
                       <option value="Homicide">Homicide</option>
                       <option value="Assault">Assault</option>
                       <option value="Robbery">Robbery</option>
                       <option value="Arson">Arson</option>
                       <option value="Larceny">Larceny</option>
-                      {year ? JSON.parse(year) < 2013 ? null : <option value="Rape">Rape</option> : null}
-
+                      <option value="Rape">Rape</option>
                     </select>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-
               <br></br>
               <Button onClick={handleSubmit}>View</Button>
-
             </Card.Body>
-          {/* </Card> */}
+          </Card>
           <div>
-          
-            <Collapse in={onselect.state} dimension="width">
+            <Collapse in={onselect.state} >
             {!onselect.state ? (
               <Card className="crime-info-hover">
-                <strong>Static Crime Data</strong>
-                <p>Hover on each State/County for more details</p>
               </Card>
-            
           ) : (
-            
               <Card className="crime-info-hover">
                 <Card.Body>
                 <Card.Title><strong>{crimes.name}</strong></Card.Title>
-                <ul className="crime-info" >
+                <Container className="crime-info" >
                   
-
                   <Row><Col><h4>Crime Rate:</h4></Col><Col><Badge bg="danger">{Math.floor(crimes.crimeRate * 100) / 100}</Badge></Col></Row>
                   <Row><Col><h4>Total Crimes:</h4></Col><Col><Badge>{(crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime).toLocaleString("en-US")}</Badge></Col></Row>
-                  <Row><Col><h4>Homicide:</h4></Col><Col><Badge>{(crimes.data.results[0].homicide).toLocaleString('en-US')}</Badge></Col></Row>
-                  <Row><Col><h4>Assault:</h4></Col><Col><Badge>{(crimes.data.results[0].aggravated_assault).toLocaleString('en-US')}</Badge></Col></Row>
-                  <Row><Col><h4>Robbery:</h4></Col><Col><Badge>{(crimes.data.results[0].robbery).toLocaleString('en-US')}</Badge></Col></Row>
-                  <Row><Col><h4>Larceny:</h4></Col><Col> <Badge>{(crimes.data.results[0].larceny).toLocaleString('en-US')}</Badge></Col></Row>
-                  {crimes.data.results[0].rape_revised > 0 ? <Row><Col><h4>Rape:</h4></Col><Col> <Badge>{(crimes.data.results[0].rape_revised).toLocaleString()}</Badge></Col></Row> : null }
+                  <Row><Col><h4>Homicide:</h4></Col><Col><Badge>{(crimes.data.results[0].homicide)}</Badge></Col></Row>
+                  <Row><Col><h4>Assault:</h4></Col><Col><Badge>{(crimes.data.results[0].aggravated_assault)}</Badge></Col></Row>
+                  <Row><Col><h4>Robbery:</h4></Col><Col><Badge>{(crimes.data.results[0].robbery)}</Badge></Col></Row>
+                  <Row><Col><h4>Larceny:</h4></Col><Col> <Badge>{(crimes.data.results[0].larceny)}</Badge></Col></Row>
+                  {crimes.data.results[0].rape_revised > 0 ? <Row><Col><h4>Rape:</h4></Col><Col> <Badge>{(crimes.data.results[0].rape_revised)}</Badge></Col></Row> : null }
                   <Row><Col><h4>Population:</h4></Col><Col> <Badge>{(crimes.data.results[0].population)}</Badge></Col></Row>
                   <Row><Col><h4>Density:</h4></Col><Col> <Badge>{crimes.density}</Badge> <br /> people per square km</Col></Row>
                 </Container>
-
                 </Card.Body>
               </Card>
           )}
