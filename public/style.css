@@ -74,7 +74,7 @@ footer {
   color: #c0c0c0;
   justify-content: space-evenly;
   align-items: center;
-  height: 23vh;
+  height: 30vh;
 }
 
 .footer-column {
@@ -136,24 +136,54 @@ footer {
 /*MAP COMPONENT END*/
 
 /*STATS COMPONENT START*/
-
-.statsBody {
-  margin: 0;
+.gridBox {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 45vmin;
+  height: 45vmin;
+  border: solid lightgray 1px;
+  margin: 2vmin;
+  padding: 1vmin;
+}
+
+.gridBox:hover {
+  border: solid gray 1px;
+}
+.gridBoxHeader {
+  margin-bottom: 2vmin;
+  font-size: 3vmin;
+  text-align: center;
+}
+.statsBody {
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vmin;
-  height: 200vh;
+  height: 95vh;
   width: 100%;
 }
 .statsForm {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   width: 40vmin;
-  height: auto;
+  height: 20vmin;
+}
+.categoryInput {
+  width: 30vmin;
+  height: 3.5vmin;
+  font-size: 2vmin;
+  text-align: center;
+}
+.categoryInput:hover {
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: white;
 }
 
 .selectCounty {
@@ -178,7 +208,7 @@ button:hover {
   height: 5vmin;
 }
 
-/*MAP COMPONENT END*/
+/*STATS COMPONENT END*/
 
 /*BARCHART COMPONENT START*/
 
@@ -191,13 +221,12 @@ button:hover {
 /*BARCHART COMPONENT END*/
 
 /*DOUGHNUT CHART START*/
-.doughnutChart{
+.doughnutChart {
   width: 80vmin;
   height: auto;
   padding: 6vmin;
 }
 /*DOUGHNUT CHART START*/
-
 
 /*TEAM COMPONENT START*/
 
@@ -242,29 +271,47 @@ button:hover {
 /*NEWSFEED COMPONENT START*/
 
 .newsFeedBody {
+  margin: 0;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: #2F4F4F;
+  background-color: #2f4f4f;
   padding-top: 5vmin;
   justify-content: space-evenly;
 }
+
 
 /* .card {
   margin-bottom: 100px;
   margin-left: 20px;
   }
 
-.card-body, .card-link, .card-text {
+.newsFeedArticle {
+  border: 2px solid black;
+  margin: 5px;
+} 
+
+
+.card-body,
+.card-link,
+.card-text {
   text-decoration: none;
   font-family: monospace;
   height: auto;
   color: white;
-  background-color: #A9A9A9;
-  }
+  background-color: #a9a9a9;
+}
 
 
 .card-title.h5 {
   border-bottom: 3px solid black;
   font-family: monospace;
 } */
+
+.articleImage {
+  margin-left: 125px;
+  margin-right: 125px;
+  width: 20vw;
+  height: 10vh;
+}
+
 /*NEWSFEED COMPONENT END*/
