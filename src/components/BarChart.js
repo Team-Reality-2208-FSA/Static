@@ -108,17 +108,24 @@ function BarChart() {
         <form className="statsForm " onSubmit={onSubmit}>
           <label htmlFor="chosenState">State initials</label>
           <input
+            className="categoryInput"
             placeholder="ex. NY"
             value={chosenState}
             onChange={(evt) => setChosenState(evt.target.value.toUpperCase())}
           />
-          <button type="submit">Submit</button>
+          <div>
+            <button className="categoryInput" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
 
       <div className="gridBox">
         <div className="gridBoxHeader">Annual crimes by category</div>
-        <select onChange={handleChange}>
+
+        <Bar options={options} data={data} />
+        <select className="categoryInput" onChange={handleChange}>
           <option value="Select an option">Select a category</option>
           <option value="aggravated_assault">Aggravated Assault</option>
           <option value="arson">Arson</option>
@@ -130,7 +137,6 @@ function BarChart() {
           <option value="robbery">Robbery</option>
           <option value="violent_crime">Violent Crime</option>
         </select>
-        <Bar options={options} data={data} />
       </div>
     </>
   );

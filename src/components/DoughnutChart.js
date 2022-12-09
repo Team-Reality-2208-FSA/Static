@@ -87,15 +87,7 @@ function DoughnutChart() {
     plugins: {
       title: {
         display: true,
-        text: "Category Breakdown",
-        color: "blue",
-        font: {
-          size: 20,
-        },
-        padding: {
-          // top: 30,
-          // bottom: 30,
-        },
+
         maintainAspectRation: true,
         responsive: true,
         animation: {
@@ -108,7 +100,10 @@ function DoughnutChart() {
   return (
     <>
       <div className="gridBox">
-        <Doughnut data={data} options={options} />
+        <div className="gridBoxHeader">
+          5 year totals by category
+          <Doughnut data={data} options={options} />
+        </div>
       </div>
     </>
   );

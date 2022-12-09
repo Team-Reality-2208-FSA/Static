@@ -52,7 +52,7 @@ footer {
   color: #c0c0c0;
   justify-content: space-evenly;
   align-items: center;
-  height: 23vh;
+  height: 30vh;
 }
 
 .footer-column {
@@ -138,16 +138,30 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120vh;
+  height: 95vh;
   width: 100%;
 }
 .statsForm {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   width: 40vmin;
-  height: auto;
+  height: 20vmin;
+}
+.categoryInput {
+  width: 30vmin;
+  height: 3.5vmin;
+  font-size: 2vmin;
+  text-align: center;
+}
+.categoryInput:hover {
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: white;
 }
 
 .selectCounty {
