@@ -12,8 +12,8 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 const Main = () => {
   return (
     <div>
-      <Navbar bg="dark" expand="lg" variant="dark">
-        <Container>
+      <Navbar bg="dark" expand="lg" variant="dark" >
+        <Container fluid>
           <Navbar.Brand href="/">S T A T I C</Navbar.Brand>
           <Nav className="nav-middle-links">
             <Nav.Link href="stats">Stats</Nav.Link>
