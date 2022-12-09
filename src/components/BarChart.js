@@ -38,22 +38,23 @@ function BarChart() {
   // console.log("myData", myData);
 
   const [chosenState, setChosenState] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("arson");
-  const [BarValues, setBarValues] = useState([10, 30, 40, 150, 4]);
-  const [onSub, setonSub] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [BarValues, setBarValues] = useState([]);
+  const [onSub, setonSub] = useState(false) 
 
   const setBars = async (crime) => {
     const myData = [].concat(GraphData.results).sort((a, b) => a.year - b.year);
-    console.log("myData", myData);
+    console.log('myData',myData)
     const arr = [];
 
     for (const crimes of myData) {
       arr.push(crimes[crime]);
-      console.log(arr);
+      console.log(arr)
       console.log(crime);
     }
     setBarValues(arr);
   };
+  
 
   const labels = ["2015", "2016", "2017", "2018", "2019", "2020"];
 
@@ -94,7 +95,7 @@ function BarChart() {
   function onSubmit(event) {
     event.preventDefault();
     dispatch(fetchGraphInfo(chosenState));
-    setonSub(true);
+    setonSub(true)
   }
 
   const handleChange = (event) => {
@@ -104,7 +105,7 @@ function BarChart() {
 
   return (
     <>
-      <div className="gridBox">
+      <div className="test">
         <form className="statsForm statsBody" onSubmit={onSubmit}>
           <label htmlFor="chosenState">State initials</label>
           <input
@@ -114,9 +115,9 @@ function BarChart() {
           />
           <button type="submit">Submit</button>
         </form>
-      </div>
-      <div className="gridBox">
-        <select defaultValue={selectedCategory} onChange={handleChange}>
+        {onSub ? 
+        <select onChange={handleChange}>
+          <option value="Select an option">Select a category</option>
           <option value="aggravated_assault">Aggravated Assault</option>
           <option value="arson">Arson</option>
           <option value="homicide">Homicide</option>
@@ -127,8 +128,8 @@ function BarChart() {
           <option value="robbery">Robbery</option>
           <option value="violent_crime">Violent Crime</option>
         </select>
-
-        <Bar options={options} data={data} />
+          : null}
+        <Bar className="barChart" options={options} data={data} />
       </div>
     </>
   );

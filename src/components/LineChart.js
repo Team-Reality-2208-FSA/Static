@@ -8,12 +8,12 @@ function LineChart() {
   const GraphData = useSelector(selectGraph);
   console.log(GraphData);
 
-  let CrimeRates2015 = 1330;
-  let CrimeRates2016 = 220;
-  let CrimeRates2017 = 3220;
-  let CrimeRates2018 = 125;
-  let CrimeRates2019 = 2227;
-  let CrimeRates2020 = 520;
+  let CrimeRates2015 = 0;
+  let CrimeRates2016 = 0;
+  let CrimeRates2017 = 0;
+  let CrimeRates2018 = 0;
+  let CrimeRates2019 = 0;
+  let CrimeRates2020 = 0;
 
   const myData = [].concat(GraphData.results).sort((a, b) => a.year - b.year);
 
@@ -28,8 +28,7 @@ function LineChart() {
           myData[0].homicide +
           myData[0].motor_vehicle_theft +
           myData[0].property_crime +
-          myData[0].violent_crime -
-          7642))
+          myData[0].violent_crime))
     : null;
 
   myData[1]
@@ -103,23 +102,26 @@ function LineChart() {
     : null;
 
   return (
-    <div className="gridBox">
+
+
+
+    <div>
       <Line
         data={{
           // x-axis label values
-          labels: ["2015", "2016", "2017", "2018", "2019", "2020"],
+          labels: [
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+          ],
           datasets: [
             {
               label: "Crime rate of the last 5 years",
               // y-axis data plotting values
-              data: [
-                CrimeRates2015.toFixed(2),
-                CrimeRates2016.toFixed(2),
-                CrimeRates2017.toFixed(2),
-                CrimeRates2018.toFixed(2),
-                CrimeRates2019.toFixed(2),
-                CrimeRates2020.toFixed(2),
-              ],
+              data: [CrimeRates2015.toFixed(2), CrimeRates2016.toFixed(2), CrimeRates2017.toFixed(2), CrimeRates2018.toFixed(2), CrimeRates2019.toFixed(2), CrimeRates2020.toFixed(2)],
               fill: false,
               borderWidth: 4,
               backgroundColor: "rgb(255, 99, 132)",

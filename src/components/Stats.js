@@ -17,18 +17,23 @@ function Stats() {
     // dispatch(fetchGraphInfo(chosenState));
   }, []);
 
+
   return (
     <>
       <div className="statsHeader">STATS</div>
-      <div className="statsBody">
-        <div>
+      <div>
+      <div>
           <BarChart />
         </div>
-        <div>
+        <div className="doughnutChart">
           <DoughnutChart />
+        </div>
+        <div>
           <LineChart />
         </div>
-      </div>
+        </div>
+
+      
     </>
   );
 }
