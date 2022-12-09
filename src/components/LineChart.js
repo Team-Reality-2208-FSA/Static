@@ -102,26 +102,23 @@ function LineChart() {
     : null;
 
   return (
-
-
-
-    <div>
+    <div className="gridBox">
       <Line
         data={{
           // x-axis label values
-          labels: [
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-          ],
+          labels: ["2015", "2016", "2017", "2018", "2019", "2020"],
           datasets: [
             {
               label: "Crime rate of the last 5 years",
               // y-axis data plotting values
-              data: [CrimeRates2015.toFixed(2), CrimeRates2016.toFixed(2), CrimeRates2017.toFixed(2), CrimeRates2018.toFixed(2), CrimeRates2019.toFixed(2), CrimeRates2020.toFixed(2)],
+              data: [
+                CrimeRates2015.toFixed(2),
+                CrimeRates2016.toFixed(2),
+                CrimeRates2017.toFixed(2),
+                CrimeRates2018.toFixed(2),
+                CrimeRates2019.toFixed(2),
+                CrimeRates2020.toFixed(2),
+              ],
               fill: false,
               borderWidth: 4,
               backgroundColor: "rgb(255, 99, 132)",
