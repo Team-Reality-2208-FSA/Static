@@ -8,7 +8,7 @@ import Team from "./Team";
 
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
-import Newsfeed from "./newsfeed";
+import Newsfeed from "./newsfeed.js";
 
 
 /* 

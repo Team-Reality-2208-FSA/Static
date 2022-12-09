@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { statesData } from '../states.js'
 import { fetchAllCounties, selectGeoLoading, findCounties, selectCounties, selectToggle } from '../store/CountySlice'
 import { fetchStateData, selectStateData, findCrimeData, selectCrimes, crimeDataLoading, fetchStateDataByYear, filterCrimeData, selectFilter } from "../store/stateDataslice.js";
-import { Card, Container, Collapse, Accordion, Row, Col, Button } from "react-bootstrap"
+import { Card, Container, Collapse, Accordion, Row, Col, Button, Badge } from "react-bootstrap"
 
 
 function Map() {
@@ -21,6 +21,7 @@ function Map() {
   const [offense, setOffense] = useState('Crime Rate')
   const filter = useSelector(selectFilter)
 
+    console.log(year)
   useEffect(() => {
     dispatch(fetchAllCounties())
     dispatch(fetchStateData())
@@ -263,11 +264,12 @@ function Map() {
                       <option value="Robbery">Robbery</option>
                       <option value="Arson">Arson</option>
                       <option value="Larceny">Larceny</option>
-                      <option value="Rape">Rape</option>
+                      {year ? JSON.parse(year) < 2013 ? null : <option value="Rape">Rape</option> : null}
                     </select>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+              <br></br>
               <Button onClick={handleSubmit}>View</Button>
             </Card.Body>
           </Card>
@@ -282,15 +284,15 @@ function Map() {
                 <Card.Title><strong>{crimes.name}</strong></Card.Title>
                 <Container className="crime-info" >
                   
-                  <Row><Col><h4>Crime Rate:</h4></Col><Col>{Math.floor(crimes.crimeRate * 100) / 100}</Col></Row>
-                  <Row><Col><h4>Total Crimes:</h4></Col><Col>{crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime}</Col></Row>
-                  <Row><Col><h4>Murders:</h4></Col><Col>{crimes.data.results[0].homicide}</Col></Row>
-                  <Row><Col><h4>Assaults:</h4></Col><Col>{crimes.data.results[0].aggravated_assault}</Col></Row>
-                  <Row><Col><h4>Robbery:</h4></Col><Col>{crimes.data.results[0].robbery}</Col></Row>
-                  <Row><Col><h4>Larceny:</h4></Col><Col> {crimes.data.results[0].larceny}</Col></Row>
-                  <Row><Col><h4>Rape:</h4></Col><Col> {crimes.data.results[0].rape_revised}</Col></Row>
-                  <Row><Col><h4>Population:</h4></Col><Col> {crimes.data.results[0].population}</Col></Row>
-                  <Row><Col><h4>Density:</h4></Col><Col> {crimes.density} <br /> people per square km</Col></Row>
+                  <Row><Col><h4>Crime Rate:</h4></Col><Col><Badge bg="danger">{Math.floor(crimes.crimeRate * 100) / 100}</Badge></Col></Row>
+                  <Row><Col><h4>Total Crimes:</h4></Col><Col><Badge>{(crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime).toLocaleString("en-US")}</Badge></Col></Row>
+                  <Row><Col><h4>Homicide:</h4></Col><Col><Badge>{(crimes.data.results[0].homicide).toLocaleString('en-US')}</Badge></Col></Row>
+                  <Row><Col><h4>Assault:</h4></Col><Col><Badge>{(crimes.data.results[0].aggravated_assault).toLocaleString('en-US')}</Badge></Col></Row>
+                  <Row><Col><h4>Robbery:</h4></Col><Col><Badge>{(crimes.data.results[0].robbery).toLocaleString('en-US')}</Badge></Col></Row>
+                  <Row><Col><h4>Larceny:</h4></Col><Col> <Badge>{(crimes.data.results[0].larceny).toLocaleString('en-US')}</Badge></Col></Row>
+                  {crimes.data.results[0].rape_revised > 0 ? <Row><Col><h4>Rape:</h4></Col><Col> <Badge>{(crimes.data.results[0].rape_revised).toLocaleString()}</Badge></Col></Row> : null }
+                  <Row><Col><h4>Population:</h4></Col><Col> <Badge>{(crimes.data.results[0].population)}</Badge></Col></Row>
+                  <Row><Col><h4>Density:</h4></Col><Col> <Badge>{crimes.density}</Badge> <br /> people per square km</Col></Row>
                 </Container>
                 </Card.Body>
               </Card>
