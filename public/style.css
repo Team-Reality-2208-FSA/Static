@@ -119,14 +119,14 @@ footer {
   border: 2px solid rgb(242, 230, 191);
   display: flex;
   flex-direction: column;
-  width: 30vw;
-  margin: 10px;
+  width: 25vw;
   max-height: 45vh;
 }
+
 .crime-info {
   display: flex;
   flex-direction: column;
-  width: 20vw;
+ 
 }
 
 .zipCodeForm {

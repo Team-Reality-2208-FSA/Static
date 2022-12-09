@@ -51,6 +51,6 @@ const newsfeed = () => {
   );
 };
 
-export default Newsfeed;
+export default newsfeed;
 
 
