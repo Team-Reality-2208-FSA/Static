@@ -8,13 +8,7 @@ Chart.register(ArcElement);
 
 function DoughnutChart() {
 
-  
-
-
   const GraphData = useSelector(selectGraph)
-  
-
-
     let rape = 9;
     let larceny = 9;
     let burglary = 9;
