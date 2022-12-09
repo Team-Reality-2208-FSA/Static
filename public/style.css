@@ -115,14 +115,25 @@ footer {
 
 /*STATS COMPONENT START*/
 
+.gridBox {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  border: solid lightgray 1px;
+  width: 45vmin;
+  height: 45vmin;
+  padding: 2vmin;
+  margin: 2vmin;
+  margin-bottom: 0vmin;
+}
 .statsBody {
   margin: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10vmin;
-  height: 200vh;
+
+  height: 120vh;
   width: 100%;
 }
 .statsForm {
@@ -160,22 +171,11 @@ button:hover {
 
 /*BARCHART COMPONENT START*/
 
-.barChart {
-  width: 70vw;
-  height: auto;
-  padding: 6vmin;
-}
-
 /*BARCHART COMPONENT END*/
 
 /*DOUGHNUT CHART START*/
-.doughnutChart{
-  width: 80vmin;
-  height: auto;
-  padding: 6vmin;
-}
-/*DOUGHNUT CHART START*/
 
+/*DOUGHNUT CHART START*/
 
 /*TEAM COMPONENT START*/
 
@@ -222,7 +222,7 @@ button:hover {
 .newsFeedBody {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: #2F4F4F;
+  background-color: #2f4f4f;
   padding-top: 5vmin;
   justify-content: space-evenly;
 }
@@ -230,16 +230,17 @@ button:hover {
 .card {
   margin-bottom: 100px;
   margin-left: 20px;
-  }
+}
 
-.card-body, .card-link, .card-text {
+.card-body,
+.card-link,
+.card-text {
   text-decoration: none;
   font-family: monospace;
   height: auto;
   color: white;
-  background-color: #A9A9A9;
-  }
-
+  background-color: #a9a9a9;
+}
 
 .card-title.h5 {
   border-bottom: 3px solid black;
