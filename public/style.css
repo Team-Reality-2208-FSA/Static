@@ -7,9 +7,7 @@
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
-  
 }
-
 .navbar-brand {
   border: 5px solid black;
   padding-left: 20px;
@@ -18,21 +16,13 @@
 #panel {
   border: 3px red;
 }
-body {
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  width: 100vw;
-}
-
 #Homepage {
   background-color: #000000;
-
-  
+ 
 }
 .splashImage {
   background-color: #000000;
-  width: 100%;
+  width: 98.95vw;
   height: 35vh;
 }
 
@@ -43,10 +33,8 @@ body {
   justify-content: center;
   width: 20vw;
   top:180px;
-  left: 200px
+  left: 100px
 }
-
-
 nav {
   align-items: center;
   background-color: #333333;
@@ -54,7 +42,7 @@ nav {
   display: flex;
   justify-content: space-between;
   height: 70px;
-  padding: 10px;
+  
 }
 .nav-leftSide {
   display: flex;
@@ -68,16 +56,15 @@ nav {
   width: 60vmin;
   font-size: 2.25vmin;
 }
-
 footer {
   display: flex;
   background-color: #333333;
   color: #c0c0c0;
   justify-content: space-evenly;
   align-items: center;
-  height: 30vh;
+  height: 20vh;
+  
 }
-
 .footer-column {
   justify-content: space-evenly;
   display: flex;
@@ -86,7 +73,6 @@ footer {
   height: 18vh;
   font-size: 2vmin;
 }
-
 .footer-column-name {
   text-align: center;
   font-size: 2.5vmin;
@@ -94,13 +80,26 @@ footer {
   padding: 0.5vmin;
   margin-top: 1vmin;
 }
-
 .footer-icon {
   width: 3vmin;
 }
-
+#footerLogo {
+  border: 13px solid black;
+  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
+  text-decoration: none;
+}
 .footer-icon:hover {
   cursor: pointer;
+}
+.links {
+  text-decoration: none;
+  color: aliceblue;
+}
+.links :hover {
+  color: grey
 }
 
 /*MAIN COMPONENT END*/
@@ -110,21 +109,18 @@ footer {
   height: 90vh;
   margin-top: 50px;
 }
-
 .crime-info-hover {
   border: 2px solid rgb(242, 230, 191);
   display: flex;
   flex-direction: column;
-  width: 25vw;
-  max-height: 45vh;
+  width: 28vw;
+  max-height: 50vh;
 }
-
 .crime-info {
   display: flex;
   flex-direction: column;
  
 }
-
 .zipCodeForm {
   margin-bottom: 2vh;
 }
@@ -148,7 +144,6 @@ footer {
   margin: 2vmin;
   padding: 1vmin;
 }
-
 .gridBox:hover {
   border: solid gray 1px;
 }
@@ -187,7 +182,6 @@ footer {
   cursor: pointer;
   background-color: white;
 }
-
 .selectCounty {
   width: 20vmin;
   text-align: center;
@@ -275,43 +269,45 @@ button:hover {
 .newsFeedBody {
   margin: 0;
   display: grid;
-
   grid-template-columns: auto auto auto auto;
-  background-color: #2F4F4F;
   grid-template-columns: auto auto auto auto;
-  background-color: black;
   padding-top: 5vmin;
   justify-content: space-evenly;
 }
 
-
-.card {
-  margin-bottom: 100px;
-  margin-left: 20px;
-  }
-
-
-
-  #card-body, #card-link, #card-text{
-    font-family: monospace;
-    text-decoration: none;
-    color: 			white;
-    background-color: #333333;
-
-  }
-
-
-#card-title {
-padding-bottom: 10px;
-border-bottom: 3px solid black;
-font-family: monospace;
+#card-body {
+  margin-bottom: 50px;
 }
 
-.articleImage {
-  margin-left: 125px;
-  margin-right: 125px;
-  width: 20vw;
-  height: 10vh;
+#card-link {
+  text-decoration: none;
+  color: 			rgb(0, 0, 0);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#card-text{
+  color: rgb(0, 0, 0);
+  height: 4.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50%;
+  padding-bottom: 30px;
+  border-bottom: 3px solid black;
+}
+
+#card-image {
+  margin: 10px;
+  width: 92%;
+}
+
+.wheelHeader {
+  border-bottom: 5px solid black;
 }
 
 /*NEWSFEED COMPONENT END*/

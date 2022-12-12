@@ -285,12 +285,12 @@ function Map() {
                   
                   <Row><Col><h4>Crime Rate:</h4></Col><Col><Badge bg="danger">{Math.floor(crimes.crimeRate * 100) / 100}</Badge></Col></Row>
                   <Row><Col><h4>Total Crimes:</h4></Col><Col><Badge>{(crimes.data.results[0].property_crime + crimes.data.results[0].violent_crime).toLocaleString("en-US")}</Badge></Col></Row>
-                  <Row><Col><h4>Homicide:</h4></Col><Col><Badge>{(crimes.data.results[0].homicide)}</Badge></Col></Row>
-                  <Row><Col><h4>Assault:</h4></Col><Col><Badge>{(crimes.data.results[0].aggravated_assault)}</Badge></Col></Row>
-                  <Row><Col><h4>Robbery:</h4></Col><Col><Badge>{(crimes.data.results[0].robbery)}</Badge></Col></Row>
-                  <Row><Col><h4>Larceny:</h4></Col><Col> <Badge>{(crimes.data.results[0].larceny)}</Badge></Col></Row>
-                  {crimes.data.results[0].rape_revised > 0 ? <Row><Col><h4>Rape:</h4></Col><Col> <Badge>{(crimes.data.results[0].rape_revised)}</Badge></Col></Row> : null }
-                  <Row><Col><h4>Population:</h4></Col><Col> <Badge>{(crimes.data.results[0].population)}</Badge></Col></Row>
+                  <Row><Col><h4>Homicide:</h4></Col><Col><Badge>{(crimes.data.results[0].homicide).toLocaleString("en-US")}</Badge></Col></Row>
+                  <Row><Col><h4>Assault:</h4></Col><Col><Badge>{(crimes.data.results[0].aggravated_assault).toLocaleString("en-US")}</Badge></Col></Row>
+                  <Row><Col><h4>Robbery:</h4></Col><Col><Badge>{(crimes.data.results[0].robbery).toLocaleString("en-US")}</Badge></Col></Row>
+                  <Row><Col><h4>Larceny:</h4></Col><Col> <Badge>{(crimes.data.results[0].larceny).toLocaleString("en-US")}</Badge></Col></Row>
+                  {crimes.data.results[0].rape_revised > 0 ? <Row><Col><h4>Rape:</h4></Col><Col> <Badge>{(crimes.data.results[0].rape_revised).toLocaleString("en-US")}</Badge></Col></Row> : null }
+                  <Row><Col><h4>Population:</h4></Col><Col> <Badge>{(crimes.data.results[0].population).toLocaleString("en-US")}</Badge></Col></Row>
                   <Row><Col><h4>Density:</h4></Col><Col> <Badge>{crimes.density}</Badge> <br /> people per square km</Col></Row>
                 </Container>
                 </Card.Body>

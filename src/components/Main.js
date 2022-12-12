@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import Stats from "./Stats";
 import Team from "./Team";
 import Homepage from "./Homepage";
-
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-
 import Newsfeed from "./newsfeed.js";
 
 
@@ -17,9 +15,9 @@ import Newsfeed from "./newsfeed.js";
 */
 const Main = () => {
   return (
-    <div>
-      <Navbar bg="dark" expand="lg" variant="dark" >
-        <Container fluid>
+    <div id="main">
+      <Navbar id="navbar" bg="dark" expand="lg" variant="dark" >
+        <Container >
           <Navbar.Brand href="/">S T A T I C</Navbar.Brand>
           <Nav className="nav-middle-links">
             <Nav.Link href="stats">Stats</Nav.Link>
@@ -35,6 +33,7 @@ const Main = () => {
         </Container>
       </Navbar>
 
+
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/map" element={<Map />} />
@@ -43,14 +42,7 @@ const Main = () => {
         <Route path="/newsfeed" element={<Newsfeed />} />
       </Routes>
       <footer>
-        <div className="footer-column-name">
-          <div>S</div>
-          <div>T</div>
-          <div>A</div>
-          <div>T</div>
-          <div>I</div>
-          <div>C</div>
-        </div>
+        <a id="footerLogo" href="/"><h1>S T A T I C</h1></a>
         <div className="footer-column">
           <div>FOLLOW US</div>
           <div>
@@ -74,27 +66,15 @@ const Main = () => {
         </div>
         <div className="footer-column">
           <div>API CREDIT</div>
-          <Link className="links">
-            <div>Map</div>
-          </Link>
-          <Link className="links">
-            <div>Crime Data</div>
-          </Link>
-
-          <Link className="links">
-            <div>News Articles</div>
-          </Link>
+          <Link className="links"><div>Map</div></Link>
+          <Link className="links"><div>Crime Data</div></Link>
+          <Link className="links"><div>News Articles</div></Link>
         </div>
         <div className="footer-column footer-column-aboutUs">
           <div>ABOUT US</div>
           <Link to="/team" className="links">
             <div>The Team</div>
           </Link>
-
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
         </div>
       </footer>
     </div>
